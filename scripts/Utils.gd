@@ -6,3 +6,11 @@ extends Node
 # 	TURRET,
 #     WALL
 # }
+
+enum GraphWaveform {
+	SINE,
+	SQUARE,
+    TRIANGLE,
+	SAWTOOTH,
+	COSINE
+}
