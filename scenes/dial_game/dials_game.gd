@@ -16,6 +16,11 @@ func _ready() -> void:
 	$Buttons/TextureButton_B4.button_down.connect(_button_b4_d)
 	$Buttons/TextureButton_B4.button_up.connect(_button_b4_u)
 	$Buttons/TextureButton_B5.pressed.connect(_button_b5_p)
+	$Buttons/TextureButton_T1.toggled.connect(_flip_t1)
+
+	# Buttons should start disabled
+	$Buttons/TextureButton_B3.disabled = true
+	$Buttons/TextureButton_B5.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -55,3 +60,10 @@ func _button_b4_u() -> void:
 
 func _button_b5_p() -> void:
 	print("button_5_up")
+
+func _flip_t1(state) -> void:
+	print("Toggled Switch, ", state)
+	$Buttons/TextureButton_B3.disabled = !state
+	var delay = 0.75 if state else 0.25
+	await get_tree().create_timer(delay).timeout
+	$Buttons/TextureButton_B5.disabled = !state
