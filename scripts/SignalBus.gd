@@ -1,5 +1,6 @@
 extends Node
 
 #SIGNALS HERE
-signal game_over(won: bool)
+signal game_over()
 signal end_day()
+signal reset()

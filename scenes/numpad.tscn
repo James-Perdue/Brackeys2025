@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://oo8pngegpr37"]
+
+[ext_resource type="Script" path="res://scripts/numpad.gd" id="1_s18m8"]
+[ext_resource type="Texture2D" uid="uid://bj1e2die7bkvc" path="res://icon.svg" id="2_ped2q"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s18m8")
+
+[node name="1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 454.0
+offset_right = 615.0
+offset_bottom = 582.0
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("2_ped2q")
+
+[node name="2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 456.0
+offset_right = 718.0
+offset_bottom = 584.0
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("2_ped2q")
+
+[node name="3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 699.0
+offset_top = 454.0
+offset_right = 827.0
+offset_bottom = 582.0
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("2_ped2q")
+
+[node name="4" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 353.0
+offset_right = 616.0
+offset_bottom = 481.0
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("2_ped2q")
+
+[node name="5" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 591.0
+offset_top = 355.0
+offset_right = 719.0
+offset_bottom = 483.0
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("2_ped2q")
+
+[node name="6" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 356.0
+offset_right = 824.0
+offset_bottom = 484.0
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("2_ped2q")
+
+[node name="7" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 258.0
+offset_right = 617.0
+offset_bottom = 386.0
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("2_ped2q")
+
+[node name="8" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 257.0
+offset_right = 718.0
+offset_bottom = 385.0
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("2_ped2q")
+
+[node name="9" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 257.0
+offset_right = 828.0
+offset_bottom = 385.0
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("2_ped2q")
+
+[node name="0" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 549.0
+offset_right = 718.0
+offset_bottom = 677.0
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("2_ped2q")
+
+[node name="CodeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 457.0
+offset_top = 180.0
+offset_right = 555.0
+offset_bottom = 230.0
+theme_override_font_sizes/font_size = 36
+text = "Code:"
+
+[node name="CodeNeeded" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 359.0
+offset_top = 645.0
+offset_right = 561.0
+offset_bottom = 695.0
+theme_override_font_sizes/font_size = 30
+text = "Needed Code:"
