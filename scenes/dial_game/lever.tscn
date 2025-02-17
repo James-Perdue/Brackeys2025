@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtnvynaab1rdp"]
+
+[ext_resource type="Texture2D" uid="uid://64d6lohonql7" path="res://scenes/dial_game/slot.png" id="1_3drws"]
+[ext_resource type="Texture2D" uid="uid://dmjy7vhi34lt2" path="res://scenes/dial_game/lever.png" id="2_3q7qr"]
+[ext_resource type="Script" path="res://scenes/dial_game/handle_drag.gd" id="3_c83id"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obq4m"]
+size = Vector2(367, 80)
+
+[node name="lever" type="Node2D"]
+position = Vector2(279, 121)
+scale = Vector2(0.5, 0.5)
+
+[node name="slot" type="Sprite2D" parent="."]
+position = Vector2(311, 531)
+texture = ExtResource("1_3drws")
+
+[node name="handle_body" type="CharacterBody2D" parent="."]
+input_pickable = true
+script = ExtResource("3_c83id")
+
+[node name="handle" type="Sprite2D" parent="handle_body"]
+position = Vector2(201, 599)
+texture = ExtResource("2_3q7qr")
+offset = Vector2(100, -100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="handle_body"]
+position = Vector2(405.5, 282)
+shape = SubResource("RectangleShape2D_obq4m")

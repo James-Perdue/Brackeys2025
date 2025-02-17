@@ -44,9 +44,16 @@ func _button_b2_press() -> void:
 
 func _button_b3_d() -> void:
 	print("button_3_down")
+	$Dials/steam_pressure.trend_rate_flat += 12
+	$Dials/radiativity.trend_rate_flat += 5
+	$Dials/temperature.trend_rate_flat += 2.5
+	
 
 func _button_b3_u() -> void:
 	print("button_3_up")
+	$Dials/steam_pressure.trend_rate_flat -= 12
+	$Dials/radiativity.trend_rate_flat -= 5
+	$Dials/temperature.trend_rate_flat -= 2.5
 
 func _button_b4_d() -> void:
 	print("button_4_down")
@@ -59,6 +66,10 @@ func _button_b4_u() -> void:
 	$Dials/temperature.trend_rate_flat -= 2.5
 
 func _button_b5_p() -> void:
+	var pressure = $Dials/steam_pressure.value + 25
+	var tween = get_tree().create_tween()
+	tween.tween_property($Dials/steam_pressure, "value", pressure, 3).set_trans(Tween.TRANS_ELASTIC)
+	tween.parallel().tween_property($Dials/steam_pressure, "value", pressure, 3).set_trans(Tween.TRANS_ELASTIC)
 	print("button_5_up")
 
 func _flip_t1(state) -> void:

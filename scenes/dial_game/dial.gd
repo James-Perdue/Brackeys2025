@@ -13,6 +13,7 @@ var low_fail
 var trend_target = 50
 var trend_rate_scalar = 0
 var trend_rate_flat = 0
+var values_ready = false
 
 func set_params_creation(init: float, val: float, high_warn, high_fail, low_warn, low_fail):
 	self.init_val = init
@@ -21,6 +22,7 @@ func set_params_creation(init: float, val: float, high_warn, high_fail, low_warn
 	self.high_fail = high_fail
 	self.low_warn = low_warn
 	self.low_fail = low_fail
+	values_ready = true
 
 
 func set_trends(target, rate, flaty):
@@ -44,3 +46,5 @@ func _process(delta: float) -> void:
 	$needle.rotation_degrees = angle
 	#print($needle.rotation_degrees)
 	#print(angle)
+	if values_ready and (value < low_fail or value > high_fail):
+		SignalBus.game_over.emit()
