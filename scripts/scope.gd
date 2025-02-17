@@ -58,8 +58,6 @@ func _on_goal_change_timeout():
          .set_trans(Tween.TRANS_SINE)\
          .set_ease(Tween.EASE_IN_OUT)
 
-    goal_change_timer.start()
-
 func draw_sine_wave(line_2d :Line2D, graph_factor: float):
     line_2d.clear_points()
     var points = 100
