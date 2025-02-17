@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw16bxtucu5y"]
+[gd_scene load_steps=9 format=3 uid="uid://bw16bxtucu5y"]
 
+[ext_resource type="Script" path="res://scenes/dial_game/dials_game.gd" id="1_eag7r"]
 [ext_resource type="Texture2D" uid="uid://1nn7i2go7iov" path="res://scenes/dial_game/red_button.png" id="1_s1dlf"]
 [ext_resource type="Texture2D" uid="uid://boa88lb0qsoul" path="res://scenes/dial_game/red_button_disabled.png" id="2_h3xco"]
 [ext_resource type="Texture2D" uid="uid://bnrxkysmoawnd" path="res://scenes/dial_game/red_button_pressed.png" id="3_5fq7p"]
 [ext_resource type="Texture2D" uid="uid://yiudu1ya0v0k" path="res://scenes/dial_game/toggle_off.png" id="4_judsr"]
 [ext_resource type="Texture2D" uid="uid://ccawfy4jxjyrf" path="res://scenes/dial_game/toggle_on.png" id="5_hl5ff"]
+[ext_resource type="Script" path="res://scenes/dial_game/dials.gd" id="7_4wnb7"]
+[ext_resource type="PackedScene" uid="uid://oomn0st7qm01" path="res://scenes/dial_game/dial.tscn" id="8_o5s4j"]
 
 [node name="dials_game" type="Node2D"]
+script = ExtResource("1_eag7r")
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 3
@@ -24,6 +28,7 @@ texture_pressed = ExtResource("2_h3xco")
 texture_disabled = ExtResource("3_5fq7p")
 
 [node name="TextureButton_B2" type="TextureButton" parent="Buttons"]
+layout_mode = 0
 offset_left = 100.0
 offset_right = 300.0
 offset_bottom = 400.0
@@ -33,6 +38,7 @@ texture_pressed = ExtResource("2_h3xco")
 texture_disabled = ExtResource("3_5fq7p")
 
 [node name="TextureButton_B3" type="TextureButton" parent="Buttons"]
+layout_mode = 0
 offset_left = 200.0
 offset_right = 400.0
 offset_bottom = 400.0
@@ -42,6 +48,7 @@ texture_pressed = ExtResource("2_h3xco")
 texture_disabled = ExtResource("3_5fq7p")
 
 [node name="TextureButton_B4" type="TextureButton" parent="Buttons"]
+layout_mode = 0
 offset_left = 300.0
 offset_right = 500.0
 offset_bottom = 400.0
@@ -51,6 +58,7 @@ texture_pressed = ExtResource("2_h3xco")
 texture_disabled = ExtResource("3_5fq7p")
 
 [node name="TextureButton_B5" type="TextureButton" parent="Buttons"]
+layout_mode = 0
 offset_left = 400.0
 offset_right = 600.0
 offset_bottom = 400.0
@@ -60,6 +68,7 @@ texture_pressed = ExtResource("2_h3xco")
 texture_disabled = ExtResource("3_5fq7p")
 
 [node name="TextureButton_T1" type="TextureButton" parent="Buttons"]
+layout_mode = 0
 offset_left = 500.0
 offset_top = -25.0
 offset_right = 860.0
@@ -71,12 +80,16 @@ texture_pressed = ExtResource("5_hl5ff")
 metadata/_edit_use_anchors_ = true
 
 [node name="Dials" type="Node2D" parent="."]
+script = ExtResource("7_4wnb7")
 
-[node name="Sprite2D" type="Sprite2D" parent="Dials"]
+[node name="steam_pressure" parent="Dials" instance=ExtResource("8_o5s4j")]
+position = Vector2(170, 364)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Dials"]
+[node name="temperature" parent="Dials" instance=ExtResource("8_o5s4j")]
+position = Vector2(483, 360)
 
-[node name="Sprite2D3" type="Sprite2D" parent="Dials"]
+[node name="radiativity" parent="Dials" instance=ExtResource("8_o5s4j")]
+position = Vector2(807, 374)
 
 [node name="Lever" type="Control" parent="."]
 layout_mode = 3
