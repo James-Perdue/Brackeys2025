@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cowqx4y1wkp2o"]
+
+[ext_resource type="PackedScene" uid="uid://dsi1jnhrs550c" path="res://scenes/scope.tscn" id="1_gmd5t"]
+[ext_resource type="Texture2D" uid="uid://cbkfcysgf7jkg" path="res://art/DeskV1.png" id="1_h115c"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="DeskV1" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("1_h115c")
+
+[node name="Control" parent="." instance=ExtResource("1_gmd5t")]
+offset_left = 468.0
+offset_top = 131.0
+offset_right = 468.0
+offset_bottom = 131.0
+scale = Vector2(0.332944, 0.376006)
