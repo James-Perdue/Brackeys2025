@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://oomn0st7qm01"]
+
+[ext_resource type="Script" path="res://scenes/dial_game/dial.gd" id="1_wu0nm"]
+
+[node name="dial" type="Node2D"]
+script = ExtResource("1_wu0nm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
