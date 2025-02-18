@@ -4,3 +4,5 @@ extends Node
 signal game_over()
 signal end_day()
 signal reset()
+signal next_day()
+

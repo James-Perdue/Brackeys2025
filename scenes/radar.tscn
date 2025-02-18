@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu12gt0136xqb"]
+
+[ext_resource type="Texture2D" uid="uid://bj1e2die7bkvc" path="res://icon.svg" id="1_7hila"]
+[ext_resource type="Script" path="res://scripts/radar.gd" id="1_fmy8b"]
+[ext_resource type="Texture2D" uid="uid://ce1jacbv50gl7" path="res://art/RadarScreen.png" id="2_l6tn2"]
+[ext_resource type="AudioStream" uid="uid://c0ejyskpl6yvo" path="res://audio/buzzer.wav" id="2_ognll"]
+[ext_resource type="Texture2D" uid="uid://1h2qikfpvxvn" path="res://art/RadarWindow.png" id="5_21gsp"]
+[ext_resource type="Texture2D" uid="uid://1m6fyt8qnd8c" path="res://art/Flywheel.png" id="6_3rpt3"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fmy8b")
+warning_sound = ExtResource("2_ognll")
+
+[node name="HitButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 672.0
+offset_top = 585.0
+offset_right = 800.0
+offset_bottom = 713.0
+pivot_offset = Vector2(64, 64)
+texture_normal = ExtResource("1_7hila")
+
+[node name="RadarScreen" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 373.0
+offset_top = 9.0
+offset_right = 885.0
+offset_bottom = 521.0
+texture = ExtResource("2_l6tn2")
+
+[node name="RadarWindow" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 373.0
+offset_top = 9.0
+offset_right = 885.0
+offset_bottom = 521.0
+pivot_offset = Vector2(254, 252)
+texture = ExtResource("5_21gsp")
+
+[node name="Dial" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 452.0
+offset_top = 590.0
+offset_right = 516.0
+offset_bottom = 654.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(32, 32)
+texture_normal = ExtResource("6_3rpt3")

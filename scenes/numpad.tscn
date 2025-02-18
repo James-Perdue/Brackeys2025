@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://oo8pngegpr37"]
+[gd_scene load_steps=14 format=3 uid="uid://oo8pngegpr37"]
 
 [ext_resource type="Script" path="res://scripts/numpad.gd" id="1_s18m8"]
-[ext_resource type="Texture2D" uid="uid://bj1e2die7bkvc" path="res://icon.svg" id="2_ped2q"]
+[ext_resource type="AudioStream" uid="uid://g4ny6v2tcent" path="res://audio/KeyClick.wav" id="2_0smia"]
+[ext_resource type="Texture2D" uid="uid://c8g6amc670efx" path="res://art/NumpadFrame.png" id="2_2dsxe"]
+[ext_resource type="Texture2D" uid="uid://55iw05lk16o0" path="res://art/num1V2.png" id="2_ei3mt"]
+[ext_resource type="Texture2D" uid="uid://cshh54kwhlaoj" path="res://art/num2key.png" id="3_g84qc"]
+[ext_resource type="Texture2D" uid="uid://diobhoeqoing4" path="res://art/num3Key.png" id="4_drqky"]
+[ext_resource type="Texture2D" uid="uid://b80w6jxqw0mmd" path="res://art/num4.png" id="5_ww7ia"]
+[ext_resource type="Texture2D" uid="uid://jcnvw0xwvwxw" path="res://art/num5.png" id="6_qae6n"]
+[ext_resource type="Texture2D" uid="uid://c403tt7gpf42x" path="res://art/num6.png" id="7_yxmt2"]
+[ext_resource type="Texture2D" uid="uid://4rg4emgml6tj" path="res://art/num7.png" id="8_dijyq"]
+[ext_resource type="Texture2D" uid="uid://dxjjoe06r4e80" path="res://art/num8.png" id="9_r6cr8"]
+[ext_resource type="Texture2D" uid="uid://c3y1gcwoilehh" path="res://art/num9.png" id="10_2qrrr"]
+[ext_resource type="Texture2D" uid="uid://by1wnx3dt6cb8" path="res://art/num0.png" id="11_qevx7"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,96 +22,96 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s18m8")
+keypress_sound = ExtResource("2_0smia")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 236.0
+offset_right = 719.0
+offset_bottom = 536.0
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_2dsxe")
 
 [node name="1" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 487.0
-offset_top = 454.0
-offset_right = 615.0
-offset_bottom = 582.0
-scale = Vector2(0.66, 0.66)
-texture_normal = ExtResource("2_ped2q")
+offset_left = 496.0
+offset_top = 437.0
+offset_right = 560.0
+offset_bottom = 501.0
+texture_normal = ExtResource("2_ei3mt")
 
 [node name="2" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 590.0
-offset_top = 456.0
-offset_right = 718.0
-offset_bottom = 584.0
-scale = Vector2(0.66, 0.66)
-texture_normal = ExtResource("2_ped2q")
+offset_left = 585.0
+offset_top = 435.0
+offset_right = 649.0
+offset_bottom = 499.0
+texture_normal = ExtResource("3_g84qc")
 
 [node name="3" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 699.0
-offset_top = 454.0
-offset_right = 827.0
-offset_bottom = 582.0
-scale = Vector2(0.66, 0.66)
-texture_normal = ExtResource("2_ped2q")
+offset_left = 675.0
+offset_top = 434.0
+offset_right = 739.0
+offset_bottom = 498.0
+texture_normal = ExtResource("4_drqky")
 
 [node name="4" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 488.0
-offset_top = 353.0
-offset_right = 616.0
-offset_bottom = 481.0
-scale = Vector2(0.66, 0.66)
-texture_normal = ExtResource("2_ped2q")
+offset_left = 497.0
+offset_top = 358.0
+offset_right = 561.0
+offset_bottom = 422.0
+texture_normal = ExtResource("5_ww7ia")
 
 [node name="5" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 591.0
-offset_top = 355.0
-offset_right = 719.0
-offset_bottom = 483.0
-scale = Vector2(0.66, 0.66)
-texture_normal = ExtResource("2_ped2q")
+offset_left = 587.0
+offset_top = 358.0
+offset_right = 651.0
+offset_bottom = 422.0
+texture_normal = ExtResource("6_qae6n")
 
 [node name="6" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 696.0
+offset_left = 675.0
 offset_top = 356.0
-offset_right = 824.0
-offset_bottom = 484.0
-scale = Vector2(0.66, 0.66)
-texture_normal = ExtResource("2_ped2q")
+offset_right = 739.0
+offset_bottom = 420.0
+texture_normal = ExtResource("7_yxmt2")
 
 [node name="7" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 489.0
-offset_top = 258.0
-offset_right = 617.0
-offset_bottom = 386.0
-scale = Vector2(0.66, 0.66)
-texture_normal = ExtResource("2_ped2q")
+offset_left = 497.0
+offset_top = 279.0
+offset_right = 561.0
+offset_bottom = 343.0
+texture_normal = ExtResource("8_dijyq")
 
 [node name="8" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 590.0
-offset_top = 257.0
-offset_right = 718.0
-offset_bottom = 385.0
-scale = Vector2(0.66, 0.66)
-texture_normal = ExtResource("2_ped2q")
+offset_left = 588.0
+offset_top = 277.0
+offset_right = 652.0
+offset_bottom = 341.0
+texture_normal = ExtResource("9_r6cr8")
 
 [node name="9" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 700.0
-offset_top = 257.0
-offset_right = 828.0
-offset_bottom = 385.0
-scale = Vector2(0.66, 0.66)
-texture_normal = ExtResource("2_ped2q")
+offset_left = 674.0
+offset_top = 279.0
+offset_right = 738.0
+offset_bottom = 343.0
+texture_normal = ExtResource("10_2qrrr")
 
 [node name="0" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 590.0
-offset_top = 549.0
-offset_right = 718.0
-offset_bottom = 677.0
-scale = Vector2(0.66, 0.66)
-texture_normal = ExtResource("2_ped2q")
+offset_left = 584.0
+offset_top = 509.0
+offset_right = 648.0
+offset_bottom = 573.0
+texture_normal = ExtResource("11_qevx7")
 
 [node name="CodeLabel" type="Label" parent="."]
 unique_name_in_owner = true
@@ -109,6 +120,7 @@ offset_left = 457.0
 offset_top = 180.0
 offset_right = 555.0
 offset_bottom = 230.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 text = "Code:"
 
@@ -119,5 +131,6 @@ offset_left = 359.0
 offset_top = 645.0
 offset_right = 561.0
 offset_bottom = 695.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Needed Code:"
