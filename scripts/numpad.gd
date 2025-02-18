@@ -9,9 +9,11 @@ var warning = false
 
 @export var warning_sound: AudioStream
 @export var incorrect_sound: AudioStream
+@export var keypress_sound: AudioStream
 
 @onready var warning_player = AudioStreamPlayer.new()
 @onready var incorrect_player = AudioStreamPlayer.new()
+@onready var keypress_player = AudioStreamPlayer.new()
 
 func _ready():
     goal_code = generate_random_code()
@@ -34,16 +36,19 @@ func _ready():
 
     add_child(warning_player)
     add_child(incorrect_player)
+    add_child(keypress_player)
     warning_player.stream = warning_sound
     incorrect_player.stream = incorrect_sound
+    keypress_player.stream = keypress_sound
 
 func _on_game_timer_timeout():
-    SignalBus.game_over.emit(false)
+    SignalBus.game_over.emit()
 
 func _on_warning_timer_timeout():
     process_warning(true)
 
 func _on_number_pressed(number: int):
+    keypress_player.play()
     code += str(number)
     code_label.text = "Code:" + code
     if(code[code.length() - 1] != goal_code[code.length() - 1]):
@@ -58,6 +63,7 @@ func _on_number_pressed(number: int):
             goal_code = generate_random_code()
             goal_code_label.text = "Code Needed: " + goal_code
             process_warning(false)
+            game_timer.start()
         else:
             print("Wrong Code!")
             incorrect_player.play()

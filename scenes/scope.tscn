@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsi1jnhrs550c"]
+[gd_scene load_steps=7 format=3 uid="uid://dsi1jnhrs550c"]
 
 [ext_resource type="Script" path="res://scripts/scope.gd" id="1_mettw"]
 [ext_resource type="Texture2D" uid="uid://bj1e2die7bkvc" path="res://icon.svg" id="2_8g4qa"]
 [ext_resource type="AudioStream" uid="uid://c0ejyskpl6yvo" path="res://audio/buzzer.wav" id="2_yvrgh"]
+[ext_resource type="Texture2D" uid="uid://1m6fyt8qnd8c" path="res://art/Flywheel.png" id="3_nkkkr"]
 [ext_resource type="Texture2D" uid="uid://blv37mvy57idl" path="res://art/WarningIndicatorV1.png" id="4_x3gy0"]
 [ext_resource type="Texture2D" uid="uid://tj0wt84xlgt0" path="res://art/WarningLight.png" id="5_08v84"]
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,25 +20,27 @@ warning_sound_file = ExtResource("2_yvrgh")
 [node name="Dial" type="TextureButton" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 563.0
-offset_top = 463.0
-offset_right = 691.0
-offset_bottom = 591.0
-pivot_offset = Vector2(64, 64)
-texture_normal = ExtResource("2_8g4qa")
+offset_left = 592.0
+offset_top = 477.0
+offset_right = 656.0
+offset_bottom = 541.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(32, 32)
+texture_normal = ExtResource("3_nkkkr")
 
 [node name="Indicator" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 491.0
-offset_top = 41.0
-offset_right = 555.0
-offset_bottom = 105.0
+offset_left = 490.0
+offset_top = 59.0
+offset_right = 554.0
+offset_bottom = 123.0
 scale = Vector2(4.38001, 2.76224)
 texture = ExtResource("4_x3gy0")
 
 [node name="IndicatorLight" type="TextureRect" parent="Indicator"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 texture = ExtResource("5_08v84")

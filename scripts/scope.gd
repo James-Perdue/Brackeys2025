@@ -23,6 +23,7 @@ var dial_active: bool = false
 var goal_tween: Tween
 var warning_tween: Tween
 var warning: bool = false
+var dial_center: Vector2 = Vector2.ZERO
 
 func _ready():
     draw_sine_wave(goal_line, goal_graph_factor)
@@ -45,6 +46,7 @@ func _ready():
     add_child(warning_sound)
     goal_change_timer.start()
     indicator_light.modulate.a = 0
+    dial_center = dial.global_position + dial.size/2
 
 func _on_goal_change_timeout():
     var direction: int = sign(goal_graph_factor - player_line_factor)
@@ -105,17 +107,61 @@ func _process(_delta: float) -> void:
 
     if dial_active:
         var mouse_pos = get_viewport().get_mouse_position()
-        var relative_pos = mouse_pos - dial.global_position
-        if (relative_pos.x < 0 and Input.get_last_mouse_velocity().x < 0) \
-            or (relative_pos.x < 0 and Input.get_last_mouse_velocity().y > 0) or \
-           (relative_pos.x > 0 and Input.get_last_mouse_velocity().y < 0):
+        #var mouse_vel = Input.get_last_mouse_velocity()
+        var relative_pos = mouse_pos - (dial_center)
+        var upwards_vector = Vector2.UP.rotated(dial.rotation)
+
+        if relative_pos.angle_to(upwards_vector) > 0.01:
             player_line_factor += .001
             dial.rotation_degrees -= 1
-        elif (relative_pos.x > 0 and Input.get_last_mouse_velocity().x > 0) \
-            or (relative_pos.x > 0 and Input.get_last_mouse_velocity().y > 0) or \
-           (relative_pos.x < 0 and Input.get_last_mouse_velocity().y < 0):
+        elif relative_pos.angle_to(upwards_vector) < -0.01:
             player_line_factor -= .001
             dial.rotation_degrees += 1
+        clamp(dial.rotation_degrees, -360, 360)
+        # Quadrant 1
+        # print( relative_pos)
+        # if relative_pos.x < 0 and relative_pos.y < 0:
+        #     if(mouse_vel.x < 0 or mouse_vel.y < 0):
+        #         player_line_factor += .001
+        #         dial.rotation_degrees -= 1
+        #     if(mouse_vel.x > 0 or mouse_vel.y > 0):
+        #         player_line_factor -= .001
+        #         dial.rotation_degrees += 1
+        # # Quadrant 2
+        # elif relative_pos.x > 0 and relative_pos.y < 0:
+        #     if(mouse_vel.x < 0):
+        #         player_line_factor += .001
+        #         dial.rotation_degrees -= 1
+        #     if(mouse_vel.y > 0):
+        #         player_line_factor -= .001
+        #         dial.rotation_degrees += 1
+        # # Quadrant 3
+        # elif relative_pos.x > 0 and relative_pos.y > 0:
+        #     if(mouse_vel.x > 0):
+        #         player_line_factor += .001
+        #         dial.rotation_degrees -= 1
+        #     if(mouse_vel.y < 0):
+        #         player_line_factor -= .001
+        #         dial.rotation_degrees += 1
+        # # Quadrant 4
+        # elif relative_pos.x < 0 and relative_pos.y > 0:
+        #     if(mouse_vel.x < 0):
+        #         player_line_factor -= .001
+        #         dial.rotation_degrees += 1
+        #     if(mouse_vel.y > 0):
+        #         player_line_factor += .001
+        #         dial.rotation_degrees -= 1
+            
+        # if (relative_pos.x < 0 and mouse_vel.x < 0) \
+        #     or (relative_pos.x < 0 and mouse_vel.y > 0) or \
+        #    (relative_pos.x > 0 and mouse_vel.y < 0):
+        #     player_line_factor += .001
+        #     dial.rotation_degrees -= 1
+        # elif (relative_pos.x > 0 and mouse_vel.x > 0) \
+        #     or (relative_pos.x > 0 and mouse_vel.y > 0) or \
+        #    (relative_pos.x < 0 and mouse_vel.y < 0):
+        #     player_line_factor -= .001
+        #     dial.rotation_degrees += 1
 
         draw_wave(player_line, player_line_factor)
 

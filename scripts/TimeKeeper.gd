@@ -3,18 +3,24 @@ extends Node
 var day : int = 1
 var day_length: float = 10.0
 var game_over_screen = preload("res://scenes/game_over.tscn")
+var day_end_screen = preload("res://scenes/day_end.tscn")
+var day_lengths : Array[float] = [10.0, 15, 20]
+
 @onready var day_timer: Timer = Timer.new()
 
 func _ready() -> void:
     SignalBus.game_over.connect(_on_game_over)
     SignalBus.end_day.connect(_on_day_end)
     SignalBus.reset.connect(_on_reset)
+    SignalBus.next_day.connect(_on_next_day)
 
     add_child(day_timer)
     day_timer.wait_time = day_length
     day_timer.timeout.connect(_on_day_end_timer)
-
+    
 func start_day():
+    if(day < day_lengths.size()):
+        day_timer.wait_time = day_lengths[day]
     day_timer.start()
 
 func _on_day_end_timer() -> void:
@@ -23,6 +29,10 @@ func _on_day_end_timer() -> void:
 func _on_day_end() -> void:
     print("Day Ended: ", day)
     day += 1
+    var screen = day_end_screen.instantiate()
+    screen.position = get_viewport().get_visible_rect().size / 2
+    get_tree().current_scene.add_child(screen)
+    get_tree().paused = true
 
 func _on_game_over() -> void:
     print("Game Over")
@@ -36,3 +46,8 @@ func _on_reset() -> void:
     get_tree().paused = false
     day_timer.start()
     get_tree().reload_current_scene()
+
+func _on_next_day() -> void:
+    get_tree().paused = false
+    get_tree().reload_current_scene()
+    
