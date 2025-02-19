@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bw16bxtucu5y"]
+[gd_scene load_steps=11 format=3 uid="uid://bw16bxtucu5y"]
 
 [ext_resource type="Script" path="res://scenes/dial_game/dials_game.gd" id="1_eag7r"]
 [ext_resource type="Texture2D" uid="uid://1nn7i2go7iov" path="res://scenes/dial_game/red_button.png" id="1_s1dlf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/dial_game/dials.gd" id="7_4wnb7"]
 [ext_resource type="PackedScene" uid="uid://oomn0st7qm01" path="res://scenes/dial_game/dial.tscn" id="8_o5s4j"]
 [ext_resource type="PackedScene" uid="uid://dtnvynaab1rdp" path="res://scenes/dial_game/lever.tscn" id="9_pqgui"]
+[ext_resource type="PackedScene" uid="uid://bqv5gp6vvuaof" path="res://scenes/dial_game/flow_gauge.tscn" id="10_dphrg"]
 
 [node name="dials_game" type="Node2D"]
 script = ExtResource("1_eag7r")
@@ -93,5 +94,9 @@ position = Vector2(483, 360)
 position = Vector2(807, 374)
 
 [node name="lever" parent="." instance=ExtResource("9_pqgui")]
-position = Vector2(988, 132)
+position = Vector2(1020, 391)
 scale = Vector2(0.25, 0.25)
+
+[node name="flow_gauge" parent="." instance=ExtResource("10_dphrg")]
+position = Vector2(930, 48)
+scale = Vector2(0.5, 0.5)

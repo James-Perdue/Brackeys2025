@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://oomn0st7qm01"]
+[gd_scene load_steps=5 format=3 uid="uid://oomn0st7qm01"]
 
 [ext_resource type="Script" path="res://scenes/dial_game/dial.gd" id="1_wu0nm"]
 [ext_resource type="Texture2D" uid="uid://dwtg16ioj8ert" path="res://scenes/dial_game/dial_face.png" id="2_pjpno"]
 [ext_resource type="Texture2D" uid="uid://xkqik3jeun24" path="res://scenes/dial_game/dial_needle_c.png" id="3_almyu"]
+[ext_resource type="Texture2D" uid="uid://knvbhclcumdx" path="res://scenes/dial_game/fail_indicator.png" id="3_jax2g"]
 
 [node name="dial" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -10,6 +11,20 @@ script = ExtResource("1_wu0nm")
 
 [node name="face" type="Sprite2D" parent="."]
 texture = ExtResource("2_pjpno")
+
+[node name="fail_high" type="Sprite2D" parent="."]
+position = Vector2(0, 100)
+rotation = 0.720821
+texture = ExtResource("3_jax2g")
+centered = false
+offset = Vector2(-300, -400)
+
+[node name="fail_low" type="Sprite2D" parent="."]
+position = Vector2(0, 100)
+rotation = -0.0872665
+texture = ExtResource("3_jax2g")
+centered = false
+offset = Vector2(-300, -400)
 
 [node name="needle" type="Sprite2D" parent="."]
 position = Vector2(0, 100)

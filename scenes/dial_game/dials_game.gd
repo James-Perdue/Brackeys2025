@@ -4,6 +4,11 @@ var b1_held = false
 var b3_held = false
 var b4_held = false
 
+var lever_drag = [0, 0]
+var lever_to_dial_scalar = 1
+
+const SHORT_KEYS = ["A", "S", "D", "F", "G"]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -22,9 +27,70 @@ func _ready() -> void:
 	$Buttons/TextureButton_B3.disabled = true
 	$Buttons/TextureButton_B5.disabled = true
 
+	$lever/handle_body.change_dials.connect(_lever_changed_to_dials)
+	# Flow ready needs lever to be ready
+	$flow_gauge.set_params_creation(50)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	# Get Lever value and pass to flow gauge
+	$flow_gauge.value = $lever/handle_body.relative_value
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	# Fix stupid behavior with holding
+	# FIXME: Years of godot coding, still no solution to showing a button held when used from keyboard
+	match event.as_text():
+		"A":
+			if event.is_pressed() and not b1_held:
+				print("Holding")
+				b1_held = true
+				_button_b1_d()
+			elif event.is_released():
+				print("releasing")
+				b1_held = false
+				_button_b1_u()
+		"S":
+			if event.is_pressed():
+				_button_b2_press()
+		"D":
+			if event.is_pressed() and not b3_held:
+				print("Holding")
+				b3_held = true
+				_button_b3_d()
+			elif event.is_released():
+				print("releasing")
+				b3_held = false
+				_button_b3_u()
+		"F":
+			if event.is_pressed() and not b4_held:
+				print("Holding")
+				b4_held = true
+				_button_b4_d()
+			elif event.is_released():
+				print("releasing")
+				b4_held = false
+				_button_b4_u()
+		"G":
+			if event.is_pressed():
+				_button_b5_p()
+		_:
+			return  # doesn't match hotkeys for buttonry
+	get_viewport().set_input_as_handled()
+
+func _lever_changed_to_dials(is_dragging, cur_val):
+	if is_dragging:  # ie lever  got picked up
+		lever_drag[0] = cur_val
+		print("recorded drag start")
+	else:  # lever got released
+		lever_drag[1] = cur_val
+		print("recorded drag end")
+		var delta = lever_drag[1] - lever_drag[0]
+		# change over 2 second
+		$Dials/steam_pressure.trend_rate_flat -= delta * lever_to_dial_scalar / 2
+		$Dials/temperature.trend_rate_flat += delta * lever_to_dial_scalar / 4
+		await get_tree().create_timer(2).timeout
+		$Dials/steam_pressure.trend_rate_flat += delta * lever_to_dial_scalar / 2
+		$Dials/temperature.trend_rate_flat -= delta * lever_to_dial_scalar / 4
 
 
 func _button_b1_d() -> void:
@@ -78,3 +144,4 @@ func _flip_t1(state) -> void:
 	var delay = 0.75 if state else 0.25
 	await get_tree().create_timer(delay).timeout
 	$Buttons/TextureButton_B5.disabled = !state
+	lever_to_dial_scalar = 3 if state else 1  # Increase leve efficacy

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 signal dragsignal
+signal change_dials
 
 var dragging = false
 var drag_start_mouse_y_offset = 0  # get mouse y position relative to origin
@@ -9,10 +10,13 @@ const MAX_Y = 300
 const Y_SCALE = MAX_Y - MIN_Y
 const RELEASE_GRACE = 50  # if too far out of range stop dragging
 var relative_value = 0
+var drag_delta_start
+var drag_delta_end
 
 func _ready() -> void:
 	connect("dragsignal", _set_drag)
 	lev_scale = get_parent().scale.y
+	relative_value = (MAX_Y - self.position.y) * 100 / Y_SCALE
 	
 
 func _process(delta):
@@ -37,6 +41,7 @@ func _process(delta):
 		
 func _set_drag():
 	dragging = !dragging
+	change_dials.emit(dragging, relative_value)
 	var mousepos = get_viewport().get_mouse_position()
 	drag_start_mouse_y_offset = mousepos.y - self.position.y * lev_scale
 	#print("Test Drag Switch", self.position.y, " mouse position: ", mousepos.y, "offset: ", drag_start_mouse_y_offset)

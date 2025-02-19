@@ -2,6 +2,7 @@ extends Node2D
 
 const MIN_ANGLE = -60
 const MAX_ANGLE = 60
+const FAIL_IND_WIDTH = 5
 const ANGLE_RANGE = MAX_ANGLE - MIN_ANGLE
 
 var init_val: float
@@ -22,6 +23,8 @@ func set_params_creation(init: float, val: float, high_warn, high_fail, low_warn
 	self.high_fail = high_fail
 	self.low_warn = low_warn
 	self.low_fail = low_fail
+	$fail_low.rotation_degrees = ((low_fail - 50) * ANGLE_RANGE) / 100 - 5
+	$fail_high.rotation_degrees = ((high_fail - 50) * ANGLE_RANGE) / 100 + 5
 	values_ready = true
 
 
