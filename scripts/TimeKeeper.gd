@@ -30,14 +30,14 @@ func _on_day_end() -> void:
     print("Day Ended: ", day)
     day += 1
     var screen = day_end_screen.instantiate()
-    screen.position = get_viewport().get_visible_rect().size / 2
+    #screen.position = get_viewport().get_visible_rect().size / 2
     get_tree().current_scene.add_child(screen)
     get_tree().paused = true
 
 func _on_game_over() -> void:
     print("Game Over")
     var screen = game_over_screen.instantiate()
-    screen.position = get_viewport().get_visible_rect().size / 2
+    #screen.position = get_viewport().get_visible_rect().size / 2
     get_tree().current_scene.add_child(screen)
     get_tree().paused = true
 
