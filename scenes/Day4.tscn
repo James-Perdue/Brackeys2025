@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://7qqbg0hkx8yr"]
+
+[ext_resource type="Script" path="res://scripts/background_level.gd" id="1_uqgqq"]
+[ext_resource type="Texture2D" uid="uid://ctcsyfkjg1hrf" path="res://art/FullBackgroundWithMapsV2.png" id="2_fr7oy"]
+[ext_resource type="PackedScene" uid="uid://dsi1jnhrs550c" path="res://scenes/scope.tscn" id="3_632ra"]
+[ext_resource type="PackedScene" uid="uid://oo8pngegpr37" path="res://scenes/numpad.tscn" id="4_fpiyb"]
+[ext_resource type="PackedScene" uid="uid://bu12gt0136xqb" path="res://scenes/radar.tscn" id="5_7v3ym"]
+[ext_resource type="Texture2D" uid="uid://cnfgtdqddvs80" path="res://art/ClockFrame.png" id="6_vv42i"]
+[ext_resource type="Texture2D" uid="uid://dyuimdlp7sgl8" path="res://art/ClockArm.png" id="7_njmy1"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_uqgqq")
+
+[node name="DeskV1" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_fr7oy")
+
+[node name="Control" parent="." instance=ExtResource("3_632ra")]
+offset_left = 406.0
+offset_top = 121.0
+offset_right = 406.0
+offset_bottom = 121.0
+scale = Vector2(0.378945, 0.470051)
+
+[node name="Control2" parent="." instance=ExtResource("4_fpiyb")]
+offset_left = 649.0
+offset_top = 295.0
+offset_right = 649.0
+offset_bottom = 295.0
+scale = Vector2(0.25, 0.25)
+
+[node name="Control3" parent="." instance=ExtResource("5_7v3ym")]
+offset_left = 898.0
+offset_top = 236.0
+offset_right = 898.0
+offset_bottom = 236.0
+scale = Vector2(0.283151, 0.26143)
+
+[node name="ClockFrame" type="Sprite2D" parent="."]
+position = Vector2(434, 90)
+texture = ExtResource("6_vv42i")
+
+[node name="ClockArm" type="Sprite2D" parent="ClockFrame"]
+unique_name_in_owner = true
+texture = ExtResource("7_njmy1")

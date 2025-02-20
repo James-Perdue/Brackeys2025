@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://ccawfy4jxjyrf" path="res://scenes/dial_game/toggle_on.png" id="5_hl5ff"]
 [ext_resource type="Script" path="res://scenes/dial_game/dials.gd" id="7_4wnb7"]
 [ext_resource type="PackedScene" uid="uid://oomn0st7qm01" path="res://scenes/dial_game/dial.tscn" id="8_o5s4j"]
-[ext_resource type="PackedScene" uid="uid://dtnvynaab1rdp" path="res://scenes/dial_game/lever.tscn" id="9_pqgui"]
-[ext_resource type="PackedScene" uid="uid://bqv5gp6vvuaof" path="res://scenes/dial_game/flow_gauge.tscn" id="10_dphrg"]
+[ext_resource type="PackedScene" uid="uid://dkwonrfskmjfa" path="res://scenes/dial_game/lever.tscn" id="9_pqgui"]
+[ext_resource type="PackedScene" path="res://scenes/dial_game/flow_gauge.tscn" id="10_dphrg"]
 
 [node name="dials_game" type="Node2D"]
 position = Vector2(79, 220)

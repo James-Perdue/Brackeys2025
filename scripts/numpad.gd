@@ -19,7 +19,7 @@ var warning = false
 func _ready():
     goal_code = generate_random_code()
     for i in range(10):
-        var button = get_node(str(i))
+        var button = get_node("keys/" +str(i))
         button.pressed.connect(_on_number_pressed.bind(i))
 
     ticker.animation_finished.connect(_on_ticker_animation_finished)

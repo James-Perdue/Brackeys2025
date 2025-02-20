@@ -21,6 +21,9 @@ func _ready() -> void:
 
 func _process(delta):
 	if dragging:
+		if(!Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+			emit_signal("dragsignal")
+			return
 		# print("Is Dragging: ", delta)
 		var mousepos = get_viewport().get_mouse_position()
 		# print("Current position, ", lev_scale)

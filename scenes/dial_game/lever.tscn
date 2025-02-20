@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtnvynaab1rdp"]
+[gd_scene load_steps=5 format=3 uid="uid://dkwonrfskmjfa"]
 
 [ext_resource type="Texture2D" uid="uid://64d6lohonql7" path="res://scenes/dial_game/slot.png" id="1_3drws"]
 [ext_resource type="Texture2D" uid="uid://dmjy7vhi34lt2" path="res://scenes/dial_game/lever.png" id="2_3q7qr"]

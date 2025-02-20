@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/numpad.gd" id="1_s18m8"]
 [ext_resource type="AudioStream" uid="uid://g4ny6v2tcent" path="res://audio/KeyClick.wav" id="2_0smia"]
-[ext_resource type="Texture2D" uid="uid://c8g6amc670efx" path="res://art/NumpadFrame.png" id="2_2dsxe"]
 [ext_resource type="Texture2D" uid="uid://55iw05lk16o0" path="res://art/num1V2.png" id="2_ei3mt"]
 [ext_resource type="SpriteFrames" uid="uid://clqsoka6i0d3v" path="res://assets/tickerframes.tres" id="3_coeif"]
 [ext_resource type="Texture2D" uid="uid://cshh54kwhlaoj" path="res://art/num2key.png" id="3_g84qc"]
+[ext_resource type="Texture2D" uid="uid://cl2tyiojhj5nm" path="res://art/Numpad.png" id="4_7eud0"]
 [ext_resource type="Texture2D" uid="uid://diobhoeqoing4" path="res://art/num3Key.png" id="4_drqky"]
 [ext_resource type="Texture2D" uid="uid://b80w6jxqw0mmd" path="res://art/num4.png" id="5_ww7ia"]
 [ext_resource type="Texture2D" uid="uid://jcnvw0xwvwxw" path="res://art/num5.png" id="6_qae6n"]
@@ -22,122 +22,123 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_s18m8")
 keypress_sound = ExtResource("2_0smia")
 
 [node name="Ticker" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(506, 768)
+position = Vector2(376, 738)
+rotation = 0.10472
 scale = Vector2(4, 4)
+skew = 0.523599
 sprite_frames = ExtResource("3_coeif")
+
+[node name="CodeNeeded" type="Label" parent="Ticker"]
+unique_name_in_owner = true
+offset_left = -54.3185
+offset_top = -14.922
+offset_right = 304.682
+offset_bottom = 68.078
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 60
+text = "Enter: 12345"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 463.0
-offset_top = 236.0
-offset_right = 719.0
-offset_bottom = 536.0
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("2_2dsxe")
+offset_left = 242.0
+offset_top = 223.0
+offset_right = 407.0
+offset_bottom = 306.0
+scale = Vector2(4.6, 4.6)
+texture = ExtResource("4_7eud0")
 
-[node name="1" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 496.0
-offset_top = 437.0
-offset_right = 560.0
-offset_bottom = 501.0
+[node name="keys" type="Node2D" parent="."]
+position = Vector2(492, 517)
+rotation = 0.10472
+scale = Vector2(1.4, 1.4)
+skew = 0.642281
+
+[node name="1" type="TextureButton" parent="keys"]
+offset_left = -97.1074
+offset_top = -102.408
+offset_right = -33.1074
+offset_bottom = -38.4077
 texture_normal = ExtResource("2_ei3mt")
 
-[node name="2" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 585.0
-offset_top = 435.0
-offset_right = 649.0
-offset_bottom = 499.0
+[node name="2" type="TextureButton" parent="keys"]
+offset_left = -20.324
+offset_top = -102.44
+offset_right = 43.676
+offset_bottom = -38.4398
 texture_normal = ExtResource("3_g84qc")
 
-[node name="3" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 675.0
-offset_top = 434.0
-offset_right = 739.0
-offset_bottom = 498.0
+[node name="3" type="TextureButton" parent="keys"]
+offset_left = 55.8474
+offset_top = -101.157
+offset_right = 119.847
+offset_bottom = -37.1569
 texture_normal = ExtResource("4_drqky")
 
-[node name="4" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 497.0
-offset_top = 358.0
-offset_right = 561.0
-offset_bottom = 422.0
+[node name="4" type="TextureButton" parent="keys"]
+offset_left = -94.2464
+offset_top = -178.177
+offset_right = -30.2464
+offset_bottom = -114.177
 texture_normal = ExtResource("5_ww7ia")
 
-[node name="5" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 587.0
-offset_top = 358.0
-offset_right = 651.0
-offset_bottom = 422.0
+[node name="5" type="TextureButton" parent="keys"]
+offset_left = -18.4983
+offset_top = -179.312
+offset_right = 45.5017
+offset_bottom = -115.312
 texture_normal = ExtResource("6_qae6n")
 
-[node name="6" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 675.0
-offset_top = 356.0
-offset_right = 739.0
-offset_bottom = 420.0
+[node name="6" type="TextureButton" parent="keys"]
+offset_left = 56.3157
+offset_top = -180.326
+offset_right = 120.316
+offset_bottom = -116.326
 texture_normal = ExtResource("7_yxmt2")
 
-[node name="7" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 497.0
-offset_top = 279.0
-offset_right = 561.0
-offset_bottom = 343.0
+[node name="7" type="TextureButton" parent="keys"]
+offset_left = -91.9974
+offset_top = -252.632
+offset_right = -27.9974
+offset_bottom = -188.632
 texture_normal = ExtResource("8_dijyq")
 
-[node name="8" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 588.0
-offset_top = 277.0
-offset_right = 652.0
-offset_bottom = 341.0
+[node name="8" type="TextureButton" parent="keys"]
+offset_left = -17.1834
+offset_top = -253.646
+offset_right = 46.8166
+offset_bottom = -189.646
 texture_normal = ExtResource("9_r6cr8")
 
-[node name="9" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 674.0
-offset_top = 279.0
-offset_right = 738.0
-offset_bottom = 343.0
+[node name="9" type="TextureButton" parent="keys"]
+offset_left = 55.5067
+offset_top = -253.149
+offset_right = 119.507
+offset_bottom = -189.149
 texture_normal = ExtResource("10_2qrrr")
 
-[node name="0" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 584.0
-offset_top = 509.0
-offset_right = 648.0
-offset_bottom = 573.0
+[node name="0" type="TextureButton" parent="keys"]
+offset_left = -25.3754
+offset_top = -27.6231
+offset_right = 38.6246
+offset_bottom = 36.3769
 texture_normal = ExtResource("11_qevx7")
 
 [node name="CodeLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 457.0
-offset_top = 180.0
-offset_right = 555.0
-offset_bottom = 230.0
+offset_left = 527.0
+offset_top = 48.0
+offset_right = 690.0
+offset_bottom = 131.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 60
 text = "Code:"
-
-[node name="CodeNeeded" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 316.0
-offset_top = 715.0
-offset_right = 619.0
-offset_bottom = 778.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 45
-text = "Enter: 12345"

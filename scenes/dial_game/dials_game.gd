@@ -133,7 +133,7 @@ func _button_b4_u() -> void:
 
 func _button_b5_p() -> void:
     var pressure = $Dials/steam_pressure.value + 25
-    var tween = get_tree().create_tween()
+    var tween = create_tween()
     tween.tween_property($Dials/steam_pressure, "value", pressure, 3).set_trans(Tween.TRANS_ELASTIC)
     tween.parallel().tween_property($Dials/steam_pressure, "value", pressure, 3).set_trans(Tween.TRANS_ELASTIC)
     print("button_5_up")

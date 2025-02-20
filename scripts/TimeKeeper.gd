@@ -4,8 +4,8 @@ var day : int = 1
 var day_length: float = 10.0
 var game_over_screen = preload("res://scenes/game_over.tscn")
 var day_end_screen = preload("res://scenes/day_end.tscn")
-var day_lengths : Array[float] = [10.0, 15, 20]
-var day_levels  = [preload("res://scenes/Day1.tscn"), preload("res://scenes/Day2.tscn")]
+var day_lengths : Array[float] = [30, 40, 45, 50]
+var day_levels  = [preload("res://scenes/Day1.tscn"), preload("res://scenes/Day2.tscn"), preload("res://scenes/Day3.tscn"), preload("res://scenes/Day4.tscn")]
 
 @onready var day_timer: Timer = Timer.new()
 
