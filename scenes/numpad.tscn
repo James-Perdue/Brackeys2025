@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://oo8pngegpr37"]
+[gd_scene load_steps=15 format=3 uid="uid://oo8pngegpr37"]
 
 [ext_resource type="Script" path="res://scripts/numpad.gd" id="1_s18m8"]
 [ext_resource type="AudioStream" uid="uid://g4ny6v2tcent" path="res://audio/KeyClick.wav" id="2_0smia"]
 [ext_resource type="Texture2D" uid="uid://c8g6amc670efx" path="res://art/NumpadFrame.png" id="2_2dsxe"]
 [ext_resource type="Texture2D" uid="uid://55iw05lk16o0" path="res://art/num1V2.png" id="2_ei3mt"]
+[ext_resource type="SpriteFrames" uid="uid://clqsoka6i0d3v" path="res://assets/tickerframes.tres" id="3_coeif"]
 [ext_resource type="Texture2D" uid="uid://cshh54kwhlaoj" path="res://art/num2key.png" id="3_g84qc"]
 [ext_resource type="Texture2D" uid="uid://diobhoeqoing4" path="res://art/num3Key.png" id="4_drqky"]
 [ext_resource type="Texture2D" uid="uid://b80w6jxqw0mmd" path="res://art/num4.png" id="5_ww7ia"]
@@ -23,6 +24,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s18m8")
 keypress_sound = ExtResource("2_0smia")
+
+[node name="Ticker" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(506, 768)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("3_coeif")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -127,10 +134,10 @@ text = "Code:"
 [node name="CodeNeeded" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 359.0
-offset_top = 645.0
-offset_right = 561.0
-offset_bottom = 695.0
+offset_left = 316.0
+offset_top = 715.0
+offset_right = 619.0
+offset_bottom = 778.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Needed Code:"
+theme_override_font_sizes/font_size = 45
+text = "Enter: 12345"

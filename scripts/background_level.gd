@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func start_clock() -> void:
     clock_arm.rotation_degrees = 0
-    if(TimeKeeper.day_lengths.size() > TimeKeeper.day):
+    if(TimeKeeper.day_lengths.size() > TimeKeeper.day - 1):
         var tween = create_tween()
-        tween.tween_property(clock_arm, "rotation_degrees", 360, TimeKeeper.day_lengths[TimeKeeper.day])
+        tween.tween_property(clock_arm, "rotation_degrees", 360, TimeKeeper.day_lengths[TimeKeeper.day - 1])
         tween.set_trans(Tween.TRANS_LINEAR)

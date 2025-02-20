@@ -6,6 +6,7 @@ var warning = false
 @onready var goal_code_label : Label = %CodeNeeded
 @onready var game_timer = Timer.new()
 @onready var warning_timer = Timer.new()
+@onready var ticker: AnimatedSprite2D = $Ticker
 
 @export var warning_sound: AudioStream
 @export var incorrect_sound: AudioStream
@@ -20,8 +21,9 @@ func _ready():
     for i in range(10):
         var button = get_node(str(i))
         button.pressed.connect(_on_number_pressed.bind(i))
-    goal_code_label.text = "Code Needed: " + goal_code
 
+    ticker.animation_finished.connect(_on_ticker_animation_finished)
+    set_new_goal_code(goal_code)
     add_child(game_timer)
     game_timer.one_shot = true
     game_timer.wait_time = 20.0
@@ -41,6 +43,14 @@ func _ready():
     incorrect_player.stream = incorrect_sound
     keypress_player.stream = keypress_sound
 
+func set_new_goal_code(new_code: String):
+    goal_code = new_code
+    goal_code_label.text = ""
+    ticker.play()
+
+func _on_ticker_animation_finished():
+            goal_code_label.text = "Enter: " + goal_code
+
 func _on_game_timer_timeout():
     SignalBus.game_over.emit()
 
@@ -56,12 +66,12 @@ func _on_number_pressed(number: int):
         incorrect_player.play()
         code = ""
         code_label.text = "Code:" + code
-        
+
     if(code.length() == 5):
         if(code == goal_code):
             print("Code entered correctly")
-            goal_code = generate_random_code()
-            goal_code_label.text = "Code Needed: " + goal_code
+            var new_code = generate_random_code()
+            set_new_goal_code(new_code)
             process_warning(false)
             game_timer.start()
         else:

@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dsi1jnhrs550c"]
 
 [ext_resource type="Script" path="res://scripts/scope.gd" id="1_mettw"]
-[ext_resource type="Texture2D" uid="uid://bj1e2die7bkvc" path="res://icon.svg" id="2_8g4qa"]
 [ext_resource type="AudioStream" uid="uid://c0ejyskpl6yvo" path="res://audio/buzzer.wav" id="2_yvrgh"]
 [ext_resource type="Texture2D" uid="uid://1m6fyt8qnd8c" path="res://art/Flywheel.png" id="3_nkkkr"]
-[ext_resource type="Texture2D" uid="uid://blv37mvy57idl" path="res://art/WarningIndicatorV1.png" id="4_x3gy0"]
-[ext_resource type="Texture2D" uid="uid://tj0wt84xlgt0" path="res://art/WarningLight.png" id="5_08v84"]
+[ext_resource type="Texture2D" uid="uid://c6icpe5whxttl" path="res://art/AlarmFrame.png" id="4_5rhbe"]
+[ext_resource type="Texture2D" uid="uid://6wm45u5bfo77" path="res://art/LightYellow.png" id="5_gw362"]
+[ext_resource type="Texture2D" uid="uid://bbi0m55rchrpo" path="res://art/WaveMonitorV1.png" id="6_up55b"]
 
 [node name="Control2" type="Control"]
 layout_mode = 3
@@ -31,19 +31,20 @@ texture_normal = ExtResource("3_nkkkr")
 [node name="Indicator" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 490.0
-offset_top = 59.0
-offset_right = 554.0
-offset_bottom = 123.0
-scale = Vector2(4.38001, 2.76224)
-texture = ExtResource("4_x3gy0")
+offset_left = 859.0
+offset_top = 217.0
+offset_right = 930.0
+offset_bottom = 249.0
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_5rhbe")
 
 [node name="IndicatorLight" type="TextureRect" parent="Indicator"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-texture = ExtResource("5_08v84")
+offset_right = 71.0
+offset_bottom = 32.0
+texture = ExtResource("5_gw362")
 
 [node name="ScopeFrame" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -52,12 +53,12 @@ offset_left = 432.0
 offset_top = 210.0
 offset_right = 816.0
 offset_bottom = 398.855
-texture = ExtResource("2_8g4qa")
+texture = ExtResource("6_up55b")
 
 [node name="GraphLine" type="Line2D" parent="ScopeFrame"]
 unique_name_in_owner = true
-position = Vector2(3.99995, 98)
+position = Vector2(15, 95)
 
 [node name="PlayerLine" type="Line2D" parent="ScopeFrame"]
 unique_name_in_owner = true
-position = Vector2(3.99995, 98)
+position = Vector2(15, 95)

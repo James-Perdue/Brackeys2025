@@ -5,6 +5,7 @@ var day_length: float = 10.0
 var game_over_screen = preload("res://scenes/game_over.tscn")
 var day_end_screen = preload("res://scenes/day_end.tscn")
 var day_lengths : Array[float] = [10.0, 15, 20]
+var day_levels  = [preload("res://scenes/Day1.tscn"), preload("res://scenes/Day2.tscn")]
 
 @onready var day_timer: Timer = Timer.new()
 
@@ -19,8 +20,8 @@ func _ready() -> void:
     day_timer.timeout.connect(_on_day_end_timer)
     
 func start_day():
-    if(day < day_lengths.size()):
-        day_timer.wait_time = day_lengths[day]
+    if(day <= day_lengths.size()):
+        day_timer.wait_time = day_lengths[day-1]
     day_timer.start()
 
 func _on_day_end_timer() -> void:
@@ -51,3 +52,7 @@ func _on_next_day() -> void:
     get_tree().paused = false
     get_tree().reload_current_scene()
     
+func load_next_day() -> void:
+    print("Loading Day: ", day)
+    if(day <= day_levels.size()):
+        get_tree().change_scene_to_packed(day_levels[day-1])
