@@ -33,3 +33,4 @@ texture = ExtResource("7_w1v57")
 position = Vector2(140, 230)
 rotation = -0.0731297
 scale = Vector2(0.25, 0.25)
+skew = 0.0

@@ -16,6 +16,9 @@ script = ExtResource("1_62j2f")
 position = Vector2(640, 360)
 texture = ExtResource("2_kwywo")
 
+[node name="dials_game" parent="." instance=ExtResource("8_50bds")]
+position = Vector2(243, 406)
+
 [node name="Control" parent="." instance=ExtResource("1_gmd5t")]
 offset_left = 404.0
 offset_top = 144.0
@@ -45,8 +48,3 @@ texture = ExtResource("6_ag4ps")
 [node name="ClockArm" type="Sprite2D" parent="ClockFrame"]
 unique_name_in_owner = true
 texture = ExtResource("7_qg5x3")
-
-[node name="dials_game" parent="." instance=ExtResource("8_50bds")]
-position = Vector2(140, 230)
-rotation = -0.0731297
-scale = Vector2(0.25, 0.25)
