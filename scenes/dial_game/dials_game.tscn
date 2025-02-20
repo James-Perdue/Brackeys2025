@@ -12,91 +12,113 @@
 [ext_resource type="PackedScene" uid="uid://bqv5gp6vvuaof" path="res://scenes/dial_game/flow_gauge.tscn" id="10_dphrg"]
 
 [node name="dials_game" type="Node2D"]
+position = Vector2(79, 220)
+skew = -0.680678
 script = ExtResource("1_eag7r")
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1000.0
-offset_bottom = 100.0
+offset_right = 559.0
+offset_bottom = 58.0
+rotation = -0.10472
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureButton_B1" type="TextureButton" parent="Buttons"]
 layout_mode = 2
 offset_right = 200.0
 offset_bottom = 400.0
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.08, 0.08)
 texture_normal = ExtResource("1_s1dlf")
 texture_pressed = ExtResource("2_h3xco")
 texture_disabled = ExtResource("3_5fq7p")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureButton_B2" type="TextureButton" parent="Buttons"]
 layout_mode = 0
-offset_left = 100.0
-offset_right = 300.0
+offset_left = 40.0
+offset_right = 240.0
 offset_bottom = 400.0
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.08, 0.08)
 texture_normal = ExtResource("1_s1dlf")
 texture_pressed = ExtResource("2_h3xco")
 texture_disabled = ExtResource("3_5fq7p")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureButton_B3" type="TextureButton" parent="Buttons"]
 layout_mode = 0
-offset_left = 200.0
-offset_right = 400.0
+offset_left = 80.0
+offset_right = 280.0
 offset_bottom = 400.0
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.08, 0.08)
 texture_normal = ExtResource("1_s1dlf")
 texture_pressed = ExtResource("2_h3xco")
 texture_disabled = ExtResource("3_5fq7p")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureButton_B4" type="TextureButton" parent="Buttons"]
 layout_mode = 0
-offset_left = 300.0
-offset_right = 500.0
+offset_left = 120.0
+offset_right = 320.0
 offset_bottom = 400.0
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.08, 0.08)
 texture_normal = ExtResource("1_s1dlf")
 texture_pressed = ExtResource("2_h3xco")
 texture_disabled = ExtResource("3_5fq7p")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureButton_B5" type="TextureButton" parent="Buttons"]
 layout_mode = 0
-offset_left = 400.0
-offset_right = 600.0
+offset_left = 160.0
+offset_right = 360.0
 offset_bottom = 400.0
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.08, 0.08)
 texture_normal = ExtResource("1_s1dlf")
 texture_pressed = ExtResource("2_h3xco")
 texture_disabled = ExtResource("3_5fq7p")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureButton_T1" type="TextureButton" parent="Buttons"]
-layout_mode = 0
-offset_left = 500.0
-offset_top = -25.0
-offset_right = 860.0
-offset_bottom = 575.0
-scale = Vector2(0.25, 0.25)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00980556
+anchor_top = 0.095364
+anchor_right = 0.00980559
+anchor_bottom = 0.0953643
+offset_left = 216.646
+offset_top = -21.0
+offset_right = 576.646
+offset_bottom = 579.0
+scale = Vector2(0.08, 0.08)
 toggle_mode = true
 texture_normal = ExtResource("4_judsr")
 texture_pressed = ExtResource("5_hl5ff")
 metadata/_edit_use_anchors_ = true
 
 [node name="Dials" type="Node2D" parent="."]
+rotation = -0.139626
+skew = 0.684169
 script = ExtResource("7_4wnb7")
 
 [node name="steam_pressure" parent="Dials" instance=ExtResource("8_o5s4j")]
-position = Vector2(170, 364)
+position = Vector2(-40, -200)
+scale = Vector2(0.1, 0.1)
 
 [node name="temperature" parent="Dials" instance=ExtResource("8_o5s4j")]
-position = Vector2(483, 360)
+position = Vector2(40, -200)
+scale = Vector2(0.1, 0.1)
 
 [node name="radiativity" parent="Dials" instance=ExtResource("8_o5s4j")]
-position = Vector2(807, 374)
+position = Vector2(120, -200)
+scale = Vector2(0.1, 0.1)
 
 [node name="lever" parent="." instance=ExtResource("9_pqgui")]
-position = Vector2(1020, 391)
-scale = Vector2(0.25, 0.25)
+position = Vector2(281.728, -69.485)
+rotation = -0.10472
+scale = Vector2(0.1, 0.1)
 
 [node name="flow_gauge" parent="." instance=ExtResource("10_dphrg")]
-position = Vector2(930, 48)
-scale = Vector2(0.5, 0.5)
+position = Vector2(312.142, -229.043)
+rotation = -0.10472
+scale = Vector2(0.15, 0.15)
+skew = 0.699877
