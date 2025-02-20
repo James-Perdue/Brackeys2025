@@ -63,8 +63,8 @@ func _on_goal_change_timeout():
 func draw_sine_wave(line_2d :Line2D, graph_factor: float):
     line_2d.clear_points()
     var points = 100
-    var width = 375
-    var height = 95
+    var width = 355
+    var height = 80
     for i in range(points):
         var x = (i / float(points)) * width
         var y = sin(i * graph_factor) * height

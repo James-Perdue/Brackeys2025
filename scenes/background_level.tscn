@@ -1,18 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://cowqx4y1wkp2o"]
+[gd_scene load_steps=9 format=3 uid="uid://cowqx4y1wkp2o"]
 
 [ext_resource type="Script" path="res://scripts/background_level.gd" id="1_62j2f"]
 [ext_resource type="PackedScene" uid="uid://dsi1jnhrs550c" path="res://scenes/scope.tscn" id="1_gmd5t"]
-[ext_resource type="Texture2D" uid="uid://lgu55iv7e4dw" path="res://art/DeskV2.png" id="2_f3ljr"]
+[ext_resource type="Texture2D" uid="uid://ctcsyfkjg1hrf" path="res://art/FullBackgroundWithMapsV2.png" id="2_kwywo"]
 [ext_resource type="PackedScene" uid="uid://oo8pngegpr37" path="res://scenes/numpad.tscn" id="4_p768v"]
 [ext_resource type="PackedScene" uid="uid://bu12gt0136xqb" path="res://scenes/radar.tscn" id="5_abps4"]
-[ext_resource type="PackedScene" uid="uid://bw16bxtucu5y" path="res://scenes/dial_game/dials_game.tscn" id="6_fcxur"]
+[ext_resource type="Texture2D" uid="uid://cnfgtdqddvs80" path="res://art/ClockFrame.png" id="6_ag4ps"]
+[ext_resource type="Texture2D" uid="uid://dyuimdlp7sgl8" path="res://art/ClockArm.png" id="7_qg5x3"]
+[ext_resource type="PackedScene" uid="uid://bw16bxtucu5y" path="res://scenes/dial_game/dials_game.tscn" id="8_50bds"]
 
-[node name="Node2D" type="Node2D"]
+[node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_62j2f")
 
 [node name="DeskV1" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
-texture = ExtResource("2_f3ljr")
+texture = ExtResource("2_kwywo")
+
+[node name="dials_game" parent="." instance=ExtResource("8_50bds")]
+position = Vector2(243, 406)
 
 [node name="Control" parent="." instance=ExtResource("1_gmd5t")]
 offset_left = 404.0
@@ -22,12 +27,12 @@ offset_bottom = 144.0
 scale = Vector2(0.378945, 0.470051)
 
 [node name="Control2" parent="." instance=ExtResource("4_p768v")]
-offset_left = 683.0
-offset_top = 144.0
-offset_right = 683.0
-offset_bottom = 144.0
-rotation = 0.109478
-scale = Vector2(0.313756, 0.308828)
+offset_left = 663.0
+offset_top = 281.0
+offset_right = 663.0
+offset_bottom = 281.0
+rotation = 0.0908941
+scale = Vector2(0.25, 0.25)
 
 [node name="Control3" parent="." instance=ExtResource("5_abps4")]
 offset_left = 898.0
@@ -36,5 +41,10 @@ offset_right = 898.0
 offset_bottom = 236.0
 scale = Vector2(0.283151, 0.26143)
 
-[node name="dials_game" parent="." instance=ExtResource("6_fcxur")]
-position = Vector2(192, 411)
+[node name="ClockFrame" type="Sprite2D" parent="."]
+position = Vector2(434, 90)
+texture = ExtResource("6_ag4ps")
+
+[node name="ClockArm" type="Sprite2D" parent="ClockFrame"]
+unique_name_in_owner = true
+texture = ExtResource("7_qg5x3")
