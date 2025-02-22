@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cowqx4y1wkp2o"]
+[gd_scene load_steps=11 format=3 uid="uid://cowqx4y1wkp2o"]
 
 [ext_resource type="Script" path="res://scripts/background_level.gd" id="1_62j2f"]
 [ext_resource type="PackedScene" uid="uid://dsi1jnhrs550c" path="res://scenes/scope.tscn" id="1_gmd5t"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cnfgtdqddvs80" path="res://art/ClockFrame.png" id="6_ag4ps"]
 [ext_resource type="Texture2D" uid="uid://dyuimdlp7sgl8" path="res://art/ClockArm.png" id="7_qg5x3"]
 [ext_resource type="PackedScene" uid="uid://bw16bxtucu5y" path="res://scenes/dial_game/dials_game.tscn" id="8_50bds"]
+[ext_resource type="Texture2D" uid="uid://cgb7xk7rsjqm5" path="res://art/Clipboard.png" id="9_0j8qe"]
+[ext_resource type="Texture2D" uid="uid://bbi0m55rchrpo" path="res://art/WaveMonitorV1.png" id="9_ec4g1"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_62j2f")
@@ -47,3 +49,30 @@ texture = ExtResource("7_qg5x3")
 
 [node name="dials_game" parent="." instance=ExtResource("8_50bds")]
 position = Vector2(181, 411)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1172.0
+offset_top = 591.0
+offset_right = 1300.0
+offset_bottom = 719.0
+scale = Vector2(0.744625, 0.965805)
+texture = ExtResource("9_ec4g1")
+
+[node name="HelpButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 1182.0
+offset_top = 592.0
+offset_right = 1682.0
+offset_bottom = 1312.0
+scale = Vector2(0.147892, 0.147892)
+texture_normal = ExtResource("9_0j8qe")
+
+[node name="Label" type="Label" parent="HelpButton"]
+layout_mode = 0
+offset_left = 121.71
+offset_top = 331.323
+offset_right = 388.71
+offset_bottom = 496.323
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
+text = "Help"

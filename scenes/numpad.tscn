@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://oo8pngegpr37"]
+[gd_scene load_steps=19 format=3 uid="uid://oo8pngegpr37"]
 
 [ext_resource type="Script" path="res://scripts/numpad.gd" id="1_s18m8"]
 [ext_resource type="AudioStream" uid="uid://g4ny6v2tcent" path="res://audio/KeyClick.wav" id="2_0smia"]
 [ext_resource type="Texture2D" uid="uid://55iw05lk16o0" path="res://art/num1V2.png" id="2_ei3mt"]
+[ext_resource type="AudioStream" uid="uid://3gf2rmea8m0t" path="res://audio/keys_fail.wav" id="2_m6iyw"]
 [ext_resource type="SpriteFrames" uid="uid://clqsoka6i0d3v" path="res://assets/tickerframes.tres" id="3_coeif"]
 [ext_resource type="Texture2D" uid="uid://cshh54kwhlaoj" path="res://art/num2key.png" id="3_g84qc"]
 [ext_resource type="Texture2D" uid="uid://cl2tyiojhj5nm" path="res://art/Numpad.png" id="4_7eud0"]
+[ext_resource type="AudioStream" uid="uid://ds4kvyco7lx6l" path="res://audio/keys_pass_b.wav" id="4_61u2o"]
 [ext_resource type="Texture2D" uid="uid://diobhoeqoing4" path="res://art/num3Key.png" id="4_drqky"]
 [ext_resource type="Texture2D" uid="uid://b80w6jxqw0mmd" path="res://art/num4.png" id="5_ww7ia"]
 [ext_resource type="Texture2D" uid="uid://jcnvw0xwvwxw" path="res://art/num5.png" id="6_qae6n"]
@@ -14,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://dxjjoe06r4e80" path="res://art/num8.png" id="9_r6cr8"]
 [ext_resource type="Texture2D" uid="uid://c3y1gcwoilehh" path="res://art/num9.png" id="10_2qrrr"]
 [ext_resource type="Texture2D" uid="uid://by1wnx3dt6cb8" path="res://art/num0.png" id="11_qevx7"]
+[ext_resource type="Texture2D" uid="uid://c6icpe5whxttl" path="res://art/AlarmFrame.png" id="15_lp5gl"]
+[ext_resource type="Texture2D" uid="uid://6wm45u5bfo77" path="res://art/LightYellow.png" id="16_j4dv0"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -24,7 +28,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_s18m8")
+incorrect_sound = ExtResource("2_m6iyw")
 keypress_sound = ExtResource("2_0smia")
+pass_sound = ExtResource("4_61u2o")
 
 [node name="Ticker" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -131,6 +137,22 @@ offset_top = -27.6231
 offset_right = 38.6246
 offset_bottom = 36.3769
 texture_normal = ExtResource("11_qevx7")
+
+[node name="Indicator" type="TextureRect" parent="keys"]
+unique_name_in_owner = true
+offset_left = -13.7143
+offset_top = -314.434
+offset_right = 57.2857
+offset_bottom = -282.434
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("15_lp5gl")
+
+[node name="IndicatorLight" type="TextureRect" parent="keys/Indicator"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 32.0
+texture = ExtResource("16_j4dv0")
 
 [node name="CodeLabel" type="Label" parent="."]
 unique_name_in_owner = true
