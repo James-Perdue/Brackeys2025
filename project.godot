@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 SignalBus="*res://scripts/SignalBus.gd"
 Utils="*res://scripts/Utils.gd"
 TimeKeeper="*res://scripts/TimeKeeper.gd"
+MusicManager="*res://scripts/MusicManager.gd"
 
 [display]
 

@@ -14,6 +14,7 @@ var safe_target = 50
 var trend_rate_scalar = 0
 var trend_rate_flat = 0
 var values_ready = false
+@onready var flow_timer : Timer = Timer.new()
 
 func set_params_creation(val: float):
     self.value = val
@@ -25,19 +26,25 @@ func update_target_tween(new_target: float, time_to_update = 2):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    random_movement()
+    add_child(flow_timer)
+    flow_timer.one_shot = true
+    flow_timer.wait_time = max(randfn(12, 2), 2.0)
+    flow_timer.timeout.connect(random_movement)
+    flow_timer.start()
 
 func random_movement():
     """ Contains the loop that moves the target around """
     var delta
     var wait
     var new_target
-    while true:
-        delta = randi_range(-30, 30)
-        wait = max(randfn(12, 2), 2.0)
-        new_target = clamp(safe_target + delta, 0, 100)
-        await get_tree().create_timer(wait).timeout
-        update_target_tween(new_target)
+
+    delta = randi_range(-25, 25)
+    new_target = clamp(safe_target + delta, 0, 100)
+    update_target_tween(new_target)
+    
+    wait = max(randfn(12, 2), 2.0)
+    flow_timer.wait_time = wait
+    flow_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -49,4 +56,4 @@ func _process(_delta: float) -> void:
     #print($needle.rotation_degrees)
     #print(angle)
     if values_ready and (value < safe_target + low_fail_delta or value > safe_target + high_fail_delta):
-        SignalBus.game_over.emit()
+        SignalBus.game_over.emit("The Flow Gauge")

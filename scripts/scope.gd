@@ -15,6 +15,7 @@ var target_goal_factor: float = .1
 @onready var player_line: Line2D = %PlayerLine
 @onready var warning_sound: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 
+@export_range(-80.0, 24.0) var warning_volume_db: float = 0.0
 var goal_change_timer: Timer
 var current_wave_type = Utils.GraphWaveform.SINE
 var player_wave_type = Utils.GraphWaveform.SINE
@@ -33,7 +34,8 @@ func _ready():
     dial.connect("button_up", func(): dial_active = false)
 
     warning_sound.stream = warning_sound_file
-
+    warning_sound.volume_db = warning_volume_db
+    
     goal_change_timer = Timer.new()
     goal_change_timer.wait_time = 2.0
     goal_change_timer.connect("timeout", _on_goal_change_timeout)
@@ -81,7 +83,7 @@ func _process(_delta: float) -> void:
     else:
         warning = false
     if(distance > ending_threshold):
-        SignalBus.game_over.emit()
+        SignalBus.game_over.emit("The Oscilliscope")
 
     if warning:
         if(!warning_sound.playing):
