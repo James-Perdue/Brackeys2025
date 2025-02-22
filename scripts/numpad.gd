@@ -11,10 +11,21 @@ var warning = false
 @export var warning_sound: AudioStream
 @export var incorrect_sound: AudioStream
 @export var keypress_sound: AudioStream
+@export var pass_sound: AudioStream
+
+@export_range(-80.0, 24.0) var warning_volume_db: float = 0.0
+@export_range(-80.0, 24.0) var incorrect_volume_db: float = 0.0
+@export_range(-80.0, 24.0) var keypress_volume_db: float = 0.0
+@export_range(-80.0, 24.0) var pass_volume_db: float = 0.0
 
 @onready var warning_player = AudioStreamPlayer.new()
 @onready var incorrect_player = AudioStreamPlayer.new()
 @onready var keypress_player = AudioStreamPlayer.new()
+@onready var pass_player = AudioStreamPlayer.new()
+
+@onready var indicator_light : TextureRect = %IndicatorLight
+
+var warning_tween: Tween
 
 func _ready():
     goal_code = generate_random_code()
@@ -39,9 +50,17 @@ func _ready():
     add_child(warning_player)
     add_child(incorrect_player)
     add_child(keypress_player)
+    add_child(pass_player)
+
     warning_player.stream = warning_sound
+    warning_player.volume_db = warning_volume_db
     incorrect_player.stream = incorrect_sound
+    incorrect_player.volume_db = incorrect_volume_db
     keypress_player.stream = keypress_sound
+    keypress_player.volume_db = keypress_volume_db
+    pass_player.stream = pass_sound
+    pass_player.volume_db = pass_volume_db
+    indicator_light.modulate.a = 0
 
 func set_new_goal_code(new_code: String):
     goal_code = new_code
@@ -72,6 +91,7 @@ func _on_number_pressed(number: int):
             print("Code entered correctly")
             var new_code = generate_random_code()
             set_new_goal_code(new_code)
+            pass_player.play()
             process_warning(false)
             game_timer.start()
         else:
@@ -82,13 +102,27 @@ func _on_number_pressed(number: int):
 
 func process_warning(warning_value: bool):
     warning = warning_value
-    if(warning):
-        code_label.modulate = Color(1,0,0)
-        warning_player.play()
+    if warning:
+        if(!warning_player.playing):
+            warning_player.play()
+        if !warning_tween:
+            warning_tween = create_tween().set_loops()
+            warning_tween.tween_property(indicator_light, "modulate:a", 1.0, 0.5)\
+            .set_trans(Tween.TRANS_SINE)\
+            .set_ease(Tween.EASE_IN_OUT)
+            warning_tween.tween_property(indicator_light, "modulate:a", 0.0, 0.5)\
+            .set_trans(Tween.TRANS_SINE)\
+            .set_ease(Tween.EASE_IN_OUT)
     else:
-        code_label.modulate = Color(1,1,1)
-        warning_timer.start()
-        warning_player.stop()
+        if(warning_player.playing):
+            warning_player.stop()
+        if warning_tween:
+            warning_tween.kill()
+            warning_tween = create_tween()
+            warning_tween.tween_property(indicator_light, "modulate:a", 0.0, 0.5)\
+            .set_trans(Tween.TRANS_SINE)\
+            .set_ease(Tween.EASE_IN_OUT)
+            warning_tween = null
 
 func generate_random_code() -> String:
     var rng = RandomNumberGenerator.new()

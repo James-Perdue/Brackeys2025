@@ -4,8 +4,16 @@ var day : int = 1
 var day_length: float = 10.0
 var game_over_screen = preload("res://scenes/game_over.tscn")
 var day_end_screen = preload("res://scenes/day_end.tscn")
-var day_lengths : Array[float] = [30, 40, 45, 50]
-var day_levels  = [preload("res://scenes/Day1.tscn"), preload("res://scenes/Day2.tscn"), preload("res://scenes/Day3.tscn"), preload("res://scenes/Day4.tscn")]
+var day_lengths : Array[float] = [30, 40, 45, 50, 60, 60, 60]
+var day_levels  = [
+    preload("res://scenes/Day1.tscn"),
+     preload("res://scenes/Day2.tscn"),
+      preload("res://scenes/Day3.tscn"),
+       preload("res://scenes/Day4.tscn"),
+       preload("res://scenes/Day5.tscn"),
+       preload("res://scenes/Day6.tscn"),
+       preload("res://scenes/Day7.tscn")
+       ]
 
 @onready var day_timer: Timer = Timer.new()
 
@@ -43,7 +51,6 @@ func _on_game_over() -> void:
     get_tree().paused = true
 
 func _on_reset() -> void:
-    day = 1
     get_tree().paused = false
     day_timer.start()
     get_tree().reload_current_scene()

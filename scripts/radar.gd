@@ -49,7 +49,7 @@ func _on_warning_timer_timeout():
 func spawn_random_node():
     var random_angle = randf_range(0, TAU)
 
-    var radius = radar_screen.size.x / 2 - 4
+    var radius = radar_screen.size.x / 2 - 12
     var spawn_pos = Vector2(
         cos(random_angle) * radius,
         sin(random_angle) * radius

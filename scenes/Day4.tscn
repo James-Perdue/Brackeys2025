@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://7qqbg0hkx8yr"]
+[gd_scene load_steps=10 format=3 uid="uid://7qqbg0hkx8yr"]
 
 [ext_resource type="Script" path="res://scripts/background_level.gd" id="1_uqgqq"]
 [ext_resource type="Texture2D" uid="uid://ctcsyfkjg1hrf" path="res://art/FullBackgroundWithMapsV2.png" id="2_fr7oy"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bu12gt0136xqb" path="res://scenes/radar.tscn" id="5_7v3ym"]
 [ext_resource type="Texture2D" uid="uid://cnfgtdqddvs80" path="res://art/ClockFrame.png" id="6_vv42i"]
 [ext_resource type="Texture2D" uid="uid://dyuimdlp7sgl8" path="res://art/ClockArm.png" id="7_njmy1"]
+[ext_resource type="Texture2D" uid="uid://bbi0m55rchrpo" path="res://art/WaveMonitorV1.png" id="8_e1l7q"]
+[ext_resource type="Texture2D" uid="uid://cgb7xk7rsjqm5" path="res://art/Clipboard.png" id="9_q5pgh"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_uqgqq")
@@ -43,3 +45,30 @@ texture = ExtResource("6_vv42i")
 [node name="ClockArm" type="Sprite2D" parent="ClockFrame"]
 unique_name_in_owner = true
 texture = ExtResource("7_njmy1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1172.0
+offset_top = 591.0
+offset_right = 1300.0
+offset_bottom = 719.0
+scale = Vector2(0.744625, 0.965805)
+texture = ExtResource("8_e1l7q")
+
+[node name="HelpButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 1182.0
+offset_top = 592.0
+offset_right = 1682.0
+offset_bottom = 1312.0
+scale = Vector2(0.147892, 0.147892)
+texture_normal = ExtResource("9_q5pgh")
+
+[node name="Label" type="Label" parent="HelpButton"]
+layout_mode = 0
+offset_left = 121.71
+offset_top = 331.323
+offset_right = 388.71
+offset_bottom = 496.323
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
+text = "Help"

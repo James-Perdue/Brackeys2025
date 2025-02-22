@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://6qhudc04j2yo"]
+
+[ext_resource type="Script" path="res://scripts/background_level.gd" id="1_timgy"]
+[ext_resource type="Texture2D" uid="uid://ctcsyfkjg1hrf" path="res://art/FullBackgroundWithMapsV2.png" id="2_d1ryi"]
+[ext_resource type="PackedScene" uid="uid://dsi1jnhrs550c" path="res://scenes/scope.tscn" id="3_uk2gn"]
+[ext_resource type="PackedScene" uid="uid://bu12gt0136xqb" path="res://scenes/radar.tscn" id="5_w1cmh"]
+[ext_resource type="Texture2D" uid="uid://cnfgtdqddvs80" path="res://art/ClockFrame.png" id="6_aoqpf"]
+[ext_resource type="Texture2D" uid="uid://dyuimdlp7sgl8" path="res://art/ClockArm.png" id="7_kkhkp"]
+[ext_resource type="PackedScene" uid="uid://bw16bxtucu5y" path="res://scenes/dial_game/dials_game.tscn" id="8_jil5k"]
+[ext_resource type="Texture2D" uid="uid://bbi0m55rchrpo" path="res://art/WaveMonitorV1.png" id="9_wt05d"]
+[ext_resource type="Texture2D" uid="uid://cgb7xk7rsjqm5" path="res://art/Clipboard.png" id="10_np2jh"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_timgy")
+
+[node name="DeskV1" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_d1ryi")
+
+[node name="Control" parent="." instance=ExtResource("3_uk2gn")]
+offset_left = 406.0
+offset_top = 121.0
+offset_right = 406.0
+offset_bottom = 121.0
+scale = Vector2(0.378945, 0.470051)
+
+[node name="Control3" parent="." instance=ExtResource("5_w1cmh")]
+offset_left = 898.0
+offset_top = 236.0
+offset_right = 898.0
+offset_bottom = 236.0
+scale = Vector2(0.283151, 0.26143)
+
+[node name="ClockFrame" type="Sprite2D" parent="."]
+position = Vector2(434, 90)
+texture = ExtResource("6_aoqpf")
+
+[node name="ClockArm" type="Sprite2D" parent="ClockFrame"]
+unique_name_in_owner = true
+texture = ExtResource("7_kkhkp")
+
+[node name="dials_game" parent="." instance=ExtResource("8_jil5k")]
+position = Vector2(181, 411)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1172.0
+offset_top = 591.0
+offset_right = 1300.0
+offset_bottom = 719.0
+scale = Vector2(0.744625, 0.965805)
+texture = ExtResource("9_wt05d")
+
+[node name="HelpButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 1182.0
+offset_top = 592.0
+offset_right = 1682.0
+offset_bottom = 1312.0
+scale = Vector2(0.147892, 0.147892)
+texture_normal = ExtResource("10_np2jh")
+
+[node name="Label" type="Label" parent="HelpButton"]
+layout_mode = 0
+offset_left = 121.71
+offset_top = 331.323
+offset_right = 388.71
+offset_bottom = 496.323
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
+text = "Help"
