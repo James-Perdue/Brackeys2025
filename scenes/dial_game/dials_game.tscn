@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bw16bxtucu5y"]
+[gd_scene load_steps=12 format=3 uid="uid://bw16bxtucu5y"]
 
 [ext_resource type="Script" path="res://scenes/dial_game/dials_game.gd" id="1_eag7r"]
 [ext_resource type="Texture2D" uid="uid://1nn7i2go7iov" path="res://scenes/dial_game/red_button.png" id="1_s1dlf"]
+[ext_resource type="AudioStream" uid="uid://d4gdove5hepft" path="res://audio/button_sounds_warn.wav" id="2_ay51o"]
 [ext_resource type="Texture2D" uid="uid://boa88lb0qsoul" path="res://scenes/dial_game/red_button_disabled.png" id="2_h3xco"]
 [ext_resource type="Texture2D" uid="uid://bnrxkysmoawnd" path="res://scenes/dial_game/red_button_pressed.png" id="3_5fq7p"]
 [ext_resource type="Texture2D" uid="uid://yiudu1ya0v0k" path="res://scenes/dial_game/toggle_off.png" id="4_judsr"]
@@ -9,12 +10,13 @@
 [ext_resource type="Script" path="res://scenes/dial_game/dials.gd" id="7_4wnb7"]
 [ext_resource type="PackedScene" uid="uid://oomn0st7qm01" path="res://scenes/dial_game/dial.tscn" id="8_o5s4j"]
 [ext_resource type="PackedScene" uid="uid://dkwonrfskmjfa" path="res://scenes/dial_game/lever.tscn" id="9_pqgui"]
-[ext_resource type="PackedScene" path="res://scenes/dial_game/flow_gauge.tscn" id="10_dphrg"]
+[ext_resource type="PackedScene" uid="uid://bqv5gp6vvuaof" path="res://scenes/dial_game/flow_gauge.tscn" id="10_dphrg"]
 
 [node name="dials_game" type="Node2D"]
 position = Vector2(79, 220)
 skew = -0.680678
 script = ExtResource("1_eag7r")
+warning_sound = ExtResource("2_ay51o")
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 3

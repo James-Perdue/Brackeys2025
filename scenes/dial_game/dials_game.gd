@@ -6,8 +6,12 @@ var b4_held = false
 
 var lever_drag = [0, 0]
 var lever_to_dial_scalar = 1
-
+var active_dial_warnings: Array[StringName] = []
 const SHORT_KEYS = ["A", "S", "D", "F", "G"]
+
+@onready var warning_player = AudioStreamPlayer.new()
+@export var warning_sound: AudioStream
+@export_range(-80.0, 24.0) var warning_volume_db: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,10 +35,33 @@ func _ready() -> void:
     # Flow ready needs lever to be ready
     $flow_gauge.set_params_creation(50)
 
+    # connect warning signals from the dials
+    $Dials/steam_pressure.dial_warn.connect(_process_dial_warn.bind("STEAM"))
+    $Dials/temperature.dial_warn.connect(_process_dial_warn.bind("TEMP"))
+    $Dials/radiativity.dial_warn.connect(_process_dial_warn.bind("RAD"))
+    add_child(warning_player)
+    warning_player.stream = warning_sound
+    warning_player.volume_db = warning_volume_db
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     # Get Lever value and pass to flow gauge
     $flow_gauge.value = $lever/handle_body.relative_value
+
+func _process_dial_warn(set_warning: bool, dial_name: StringName):
+    print("Warning Signal, ", set_warning, dial_name)
+    # gdscript should make sets a thing
+    if set_warning and dial_name not in active_dial_warnings:
+        active_dial_warnings.append(dial_name)
+    elif not set_warning:
+        active_dial_warnings.erase(dial_name)
+    # toggle warning player as needed
+    if set_warning and not warning_player.playing:
+        print(active_dial_warnings)
+        warning_player.play()
+    elif active_dial_warnings.is_empty():
+        warning_player.stop()
+    
 
 func _unhandled_key_input(event: InputEvent) -> void:
     # Fix stupid behavior with holding
