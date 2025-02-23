@@ -6,3 +6,6 @@ func _ready():
 
 func _on_reset_button_pressed():
     SignalBus.reset.emit()
+
+func set_reason(reason):
+    %Failure.text = "Failure: " + reason

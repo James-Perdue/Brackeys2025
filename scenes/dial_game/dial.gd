@@ -50,4 +50,4 @@ func _process(delta: float) -> void:
 	#print($needle.rotation_degrees)
 	#print(angle)
 	if values_ready and (value < low_fail or value > high_fail):
-		SignalBus.game_over.emit()
+		SignalBus.game_over.emit("The Dials")

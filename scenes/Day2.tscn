@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://yldw1nbfbuux"]
+[gd_scene load_steps=8 format=3 uid="uid://yldw1nbfbuux"]
 
 [ext_resource type="Script" path="res://scripts/background_level.gd" id="1_fakep"]
 [ext_resource type="Texture2D" uid="uid://ctcsyfkjg1hrf" path="res://art/FullBackgroundWithMapsV2.png" id="2_10s06"]
-[ext_resource type="PackedScene" uid="uid://dsi1jnhrs550c" path="res://scenes/scope.tscn" id="3_dhgn0"]
 [ext_resource type="Texture2D" uid="uid://cnfgtdqddvs80" path="res://art/ClockFrame.png" id="4_2ces0"]
-[ext_resource type="PackedScene" uid="uid://oo8pngegpr37" path="res://scenes/numpad.tscn" id="4_iqnv3"]
 [ext_resource type="Texture2D" uid="uid://dyuimdlp7sgl8" path="res://art/ClockArm.png" id="5_lb3eh"]
+[ext_resource type="PackedScene" uid="uid://bw16bxtucu5y" path="res://scenes/dial_game/dials_game.tscn" id="5_yf5le"]
 [ext_resource type="Texture2D" uid="uid://bbi0m55rchrpo" path="res://art/WaveMonitorV1.png" id="7_py4sg"]
 [ext_resource type="Texture2D" uid="uid://cgb7xk7rsjqm5" path="res://art/Clipboard.png" id="8_yxfoy"]
 
@@ -16,20 +15,6 @@ script = ExtResource("1_fakep")
 position = Vector2(640, 360)
 texture = ExtResource("2_10s06")
 
-[node name="Control" parent="." instance=ExtResource("3_dhgn0")]
-offset_left = 406.0
-offset_top = 121.0
-offset_right = 406.0
-offset_bottom = 121.0
-scale = Vector2(0.378945, 0.470051)
-
-[node name="Control2" parent="." instance=ExtResource("4_iqnv3")]
-offset_left = 649.0
-offset_top = 295.0
-offset_right = 649.0
-offset_bottom = 295.0
-scale = Vector2(0.25, 0.25)
-
 [node name="ClockFrame" type="Sprite2D" parent="."]
 position = Vector2(434, 90)
 texture = ExtResource("4_2ces0")
@@ -37,6 +22,9 @@ texture = ExtResource("4_2ces0")
 [node name="ClockArm" type="Sprite2D" parent="ClockFrame"]
 unique_name_in_owner = true
 texture = ExtResource("5_lb3eh")
+
+[node name="dials_game" parent="." instance=ExtResource("5_yf5le")]
+position = Vector2(181, 411)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 1172.0

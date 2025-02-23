@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu12gt0136xqb"]
+[gd_scene load_steps=10 format=3 uid="uid://bu12gt0136xqb"]
 
 [ext_resource type="Script" path="res://scripts/radar.gd" id="1_fmy8b"]
-[ext_resource type="AudioStream" uid="uid://c0ejyskpl6yvo" path="res://audio/buzzer.wav" id="2_ognll"]
+[ext_resource type="AudioStream" uid="uid://cdt0rbbn7u2jm" path="res://audio/lock_on.ogg" id="2_aqmor"]
 [ext_resource type="Texture2D" uid="uid://bqtmwy3me4p4x" path="res://art/KABOOOM.png" id="3_1rgbs"]
+[ext_resource type="AudioStream" uid="uid://brykw1n5e3tk0" path="res://audio/521377__jarusca__rocket-launch.mp3" id="3_bx8tl"]
 [ext_resource type="Texture2D" uid="uid://kfrm28dcxcgw" path="res://art/RadarBackground.png" id="4_d8ibe"]
 [ext_resource type="Texture2D" uid="uid://1h2qikfpvxvn" path="res://art/RadarWindow.png" id="5_21gsp"]
 [ext_resource type="Texture2D" uid="uid://1m6fyt8qnd8c" path="res://art/Flywheel.png" id="6_3rpt3"]
+[ext_resource type="Texture2D" uid="uid://ccjkt2jvbp0h2" path="res://art/red_light_frame.png" id="7_4ptwy"]
+[ext_resource type="SpriteFrames" uid="uid://br5mh6f3wx8iw" path="res://assets/red_light.tres" id="8_quhrb"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,7 +18,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fmy8b")
-warning_sound = ExtResource("2_ognll")
+warning_volume_db = -12.18
+launch_volume_db = -12.0
+warning_sound = ExtResource("2_aqmor")
+missile_sound = ExtResource("3_bx8tl")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(439, -15)
@@ -56,3 +62,14 @@ offset_bottom = 698.012
 scale = Vector2(2.4, 2.4)
 pivot_offset = Vector2(32, 32)
 texture_normal = ExtResource("6_3rpt3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-71.9654, 426.026)
+rotation = -1.57079
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_4ptwy")
+
+[node name="WarningLight" type="AnimatedSprite2D" parent="Node2D/Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(4.78346, -0.655436)
+sprite_frames = ExtResource("8_quhrb")

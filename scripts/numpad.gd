@@ -37,13 +37,13 @@ func _ready():
     set_new_goal_code(goal_code)
     add_child(game_timer)
     game_timer.one_shot = true
-    game_timer.wait_time = 20.0
+    game_timer.wait_time = 15.0
     game_timer.timeout.connect(_on_game_timer_timeout)
     game_timer.start()
 
     add_child(warning_timer)
     warning_timer.one_shot = true
-    warning_timer.wait_time = 10.0
+    warning_timer.wait_time = 7.0
     warning_timer.timeout.connect(_on_warning_timer_timeout)
     warning_timer.start()
 
@@ -71,7 +71,7 @@ func _on_ticker_animation_finished():
             goal_code_label.text = "Enter: " + goal_code
 
 func _on_game_timer_timeout():
-    SignalBus.game_over.emit()
+    SignalBus.game_over.emit("The Numpad")
 
 func _on_warning_timer_timeout():
     process_warning(true)
@@ -84,7 +84,7 @@ func _on_number_pressed(number: int):
         print("Wrong Code!")
         incorrect_player.play()
         code = ""
-        code_label.text = "Code:" + code
+        code_label.text = "Code: " + code
 
     if(code.length() == 5):
         if(code == goal_code):

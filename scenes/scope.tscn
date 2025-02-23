@@ -17,6 +17,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_mettw")
 warning_sound_file = ExtResource("2_yvrgh")
+warning_volume_db = -4.0
 
 [node name="Dial" type="TextureButton" parent="."]
 unique_name_in_owner = true

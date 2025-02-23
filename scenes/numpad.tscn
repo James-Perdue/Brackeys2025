@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://oo8pngegpr37"]
+[gd_scene load_steps=21 format=3 uid="uid://oo8pngegpr37"]
 
 [ext_resource type="Script" path="res://scripts/numpad.gd" id="1_s18m8"]
 [ext_resource type="AudioStream" uid="uid://g4ny6v2tcent" path="res://audio/KeyClick.wav" id="2_0smia"]
 [ext_resource type="Texture2D" uid="uid://55iw05lk16o0" path="res://art/num1V2.png" id="2_ei3mt"]
 [ext_resource type="AudioStream" uid="uid://3gf2rmea8m0t" path="res://audio/keys_fail.wav" id="2_m6iyw"]
+[ext_resource type="AudioStream" uid="uid://bfe82r6faowxn" path="res://audio/218994__yap_audio_production__doorlocked.mp3" id="2_vr3jh"]
 [ext_resource type="SpriteFrames" uid="uid://clqsoka6i0d3v" path="res://assets/tickerframes.tres" id="3_coeif"]
 [ext_resource type="Texture2D" uid="uid://cshh54kwhlaoj" path="res://art/num2key.png" id="3_g84qc"]
 [ext_resource type="Texture2D" uid="uid://cl2tyiojhj5nm" path="res://art/Numpad.png" id="4_7eud0"]
@@ -18,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://by1wnx3dt6cb8" path="res://art/num0.png" id="11_qevx7"]
 [ext_resource type="Texture2D" uid="uid://c6icpe5whxttl" path="res://art/AlarmFrame.png" id="15_lp5gl"]
 [ext_resource type="Texture2D" uid="uid://6wm45u5bfo77" path="res://art/LightYellow.png" id="16_j4dv0"]
+[ext_resource type="Texture2D" uid="uid://caslkum2vqwoi" path="res://art/NumInput.png" id="19_j0ui7"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -28,9 +30,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_s18m8")
+warning_sound = ExtResource("2_vr3jh")
 incorrect_sound = ExtResource("2_m6iyw")
 keypress_sound = ExtResource("2_0smia")
 pass_sound = ExtResource("4_61u2o")
+warning_volume_db = -7.924
+incorrect_volume_db = -15.848
+keypress_volume_db = -3.962
+pass_volume_db = -14.857
 
 [node name="Ticker" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -154,13 +161,22 @@ offset_right = 71.0
 offset_bottom = 32.0
 texture = ExtResource("16_j4dv0")
 
-[node name="CodeLabel" type="Label" parent="."]
+[node name="NumInput" type="Sprite2D" parent="."]
+position = Vector2(823, 82)
+rotation = 0.10472
+scale = Vector2(4.9154, 3.5319)
+skew = 0.174533
+texture = ExtResource("19_j0ui7")
+
+[node name="CodeLabel" type="Label" parent="NumInput"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 527.0
-offset_top = 48.0
-offset_right = 690.0
-offset_bottom = 131.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
+offset_left = -55.4699
+offset_top = -12.7632
+offset_right = 121.53
+offset_bottom = 77.2368
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 65
 text = "Code:"

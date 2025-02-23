@@ -6,14 +6,23 @@ extends Control
 @onready var hit_button: TextureButton = %HitButton
 @onready var warning_timer = Timer.new()
 
+@onready var indicator_light : AnimatedSprite2D = %WarningLight
+
 var enemy_positions : Array[Vector2] = []
 var warning = false
+@export_range(-80.0, 24.0) var warning_volume_db: float = 0.0
+@export_range(-80.0, 24.0) var launch_volume_db: float = 0.0
 
 @export var warning_sound: AudioStream
+@export var missile_sound: AudioStream
+
 @onready var warning_player = AudioStreamPlayer.new()
+@onready var launch_player = AudioStreamPlayer.new()
 
 var dial_active: bool = false
 var dial_center: Vector2 = Vector2.ZERO
+
+var warning_tween: Tween
 
 func _ready():
     var spawn_timer = Timer.new()
@@ -35,13 +44,20 @@ func _ready():
 
     add_child(warning_player)
     warning_player.stream = warning_sound
+    warning_player.volume_db = warning_volume_db
     warning_player.finished.connect(func(): if warning: warning_player.play())
+
+    launch_player.stream = missile_sound
+    launch_player.volume_db = launch_volume_db
+    add_child(launch_player)
 
     dial.connect("button_down", func(): dial_active = true)
     dial.connect("button_up", func(): dial_active = false)
     dial_center = dial.global_position + dial.size/2
 
     hit_button.pressed.connect(_on_hit_button_pressed)
+    
+    indicator_light.modulate.a = 0
 
 func _on_warning_timer_timeout():
     process_warning(false)
@@ -80,7 +96,7 @@ func _process(delta: float) -> void:
     for i in range(enemy_positions.size()):
         var distance_to_center : Vector2 = center - enemy_positions[i]
         if(distance_to_center.length() < 15):
-            SignalBus.game_over.emit()
+            SignalBus.game_over.emit("The Radar")
             return
         if(distance_to_center.length() < 150):
             has_close_enemy = true
@@ -109,13 +125,28 @@ func process_warning(warning_value: bool):
     warning = warning_value
     if(warning):
         warning_player.play()
+        if !warning_tween:
+            warning_tween = create_tween().set_loops()
+            warning_tween.tween_property(indicator_light, "modulate:a", 1.0, 0.5)\
+            .set_trans(Tween.TRANS_SINE)\
+            .set_ease(Tween.EASE_IN_OUT)
+            warning_tween.tween_property(indicator_light, "modulate:a", 0.0, 0.5)\
+            .set_trans(Tween.TRANS_SINE)\
+            .set_ease(Tween.EASE_IN_OUT)
     else:
         warning_player.stop()
+        if warning_tween:
+            warning_tween.kill()
+            warning_tween = create_tween()
+            warning_tween.tween_property(indicator_light, "modulate:a", 0.0, 0.5)\
+            .set_trans(Tween.TRANS_SINE)\
+            .set_ease(Tween.EASE_IN_OUT)
+            warning_tween = null
 
 func _on_hit_button_pressed():
     var center = radar_screen.size / 2
     var window_forward = Vector2.UP.rotated(deg_to_rad(22.5)).rotated(radar_window.rotation)
-    
+    launch_player.play()
     for i in range(enemy_positions.size() - 1, -1, -1):
         var enemy_pos = enemy_positions[i]
         var to_enemy = enemy_pos - center
