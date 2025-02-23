@@ -56,6 +56,7 @@ func _on_game_over(reason: String) -> void:
     var screen = game_over_screen.instantiate()
     screen.set_reason(reason)
     get_tree().current_scene.add_child(screen)
+    screen.start_loss()
     get_tree().paused = true
 
 func _on_reset() -> void:
