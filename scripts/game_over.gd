@@ -9,10 +9,10 @@ func _ready():
     process_mode = Node.PROCESS_MODE_ALWAYS
     add_child(loss_player)
     loss_player.stream = loss_png
+    loss_player.volume_db = warning_volume_db
     loss_player.finished.connect(start_loss)
 
 func start_loss():
-    print("C")
     loss_player.play()
 
 func _on_reset_button_pressed():
