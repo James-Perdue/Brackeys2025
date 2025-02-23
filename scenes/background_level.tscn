@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cowqx4y1wkp2o"]
+[gd_scene load_steps=14 format=3 uid="uid://cowqx4y1wkp2o"]
 
 [ext_resource type="Script" path="res://scripts/background_level.gd" id="1_62j2f"]
 [ext_resource type="PackedScene" uid="uid://dsi1jnhrs550c" path="res://scenes/scope.tscn" id="1_gmd5t"]
@@ -10,6 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://bw16bxtucu5y" path="res://scenes/dial_game/dials_game.tscn" id="8_50bds"]
 [ext_resource type="Texture2D" uid="uid://cgb7xk7rsjqm5" path="res://art/Clipboard.png" id="9_0j8qe"]
 [ext_resource type="Texture2D" uid="uid://bbi0m55rchrpo" path="res://art/WaveMonitorV1.png" id="9_ec4g1"]
+
+[sub_resource type="Resource" id="Resource_kg6ts"]
+metadata/__load_path__ = "res://audio/218994__yap_audio_production__doorlocked.mp3"
+
+[sub_resource type="Resource" id="Resource_10ecx"]
+metadata/__load_path__ = "res://audio/keys_fail.wav"
+
+[sub_resource type="Resource" id="Resource_lq2lf"]
+metadata/__load_path__ = "res://audio/keys_pass_b.wav"
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_62j2f")
@@ -31,6 +40,9 @@ offset_top = 295.0
 offset_right = 649.0
 offset_bottom = 295.0
 scale = Vector2(0.25, 0.25)
+warning_sound = SubResource("Resource_kg6ts")
+incorrect_sound = SubResource("Resource_10ecx")
+pass_sound = SubResource("Resource_lq2lf")
 
 [node name="Control3" parent="." instance=ExtResource("5_abps4")]
 offset_left = 898.0

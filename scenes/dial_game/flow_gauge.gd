@@ -15,6 +15,9 @@ var trend_rate_scalar = 0
 var trend_rate_flat = 0
 var values_ready = false
 @onready var flow_timer : Timer = Timer.new()
+@onready var warning_player = AudioStreamPlayer.new()
+@export var warning_sound: AudioStream
+@export_range(-80.0, 24.0) var warning_volume_db: float = 0.0
 
 func set_params_creation(val: float):
     self.value = val
@@ -27,6 +30,9 @@ func update_target_tween(new_target: float, time_to_update = 2):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     add_child(flow_timer)
+    add_child(warning_player)
+    warning_player.stream = warning_sound
+    warning_player.volume_db = warning_volume_db
     flow_timer.one_shot = true
     flow_timer.wait_time = max(randfn(12, 2), 2.0)
     flow_timer.timeout.connect(random_movement)
@@ -38,13 +44,19 @@ func random_movement():
     var wait
     var new_target
 
-    delta = randi_range(-25, 25)
+    delta = randi_range(-15, 15)
     new_target = clamp(safe_target + delta, 0, 100)
     update_target_tween(new_target)
-    
+
     wait = max(randfn(12, 2), 2.0)
     flow_timer.wait_time = wait
     flow_timer.start()
+
+func _process_warning(to_warn: bool):
+    if to_warn and not warning_player.playing:
+        warning_player.play()
+    elif warning_player.playing and not to_warn:
+        warning_player.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -57,3 +69,7 @@ func _process(_delta: float) -> void:
     #print(angle)
     if values_ready and (value < safe_target + low_fail_delta or value > safe_target + high_fail_delta):
         SignalBus.game_over.emit("The Flow Gauge")
+    elif values_ready and (value < safe_target + low_warn_delta or value > safe_target + high_warn_delta):
+        _process_warning(true)
+    else:
+        _process_warning(false)

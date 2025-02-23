@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scenes/dial_game/handle_drag.gd" id="3_c83id"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obq4m"]
-size = Vector2(367, 80)
+size = Vector2(536, 178)
 
 [node name="lever" type="Node2D"]
 position = Vector2(279, 121)
@@ -25,5 +25,5 @@ texture = ExtResource("2_3q7qr")
 offset = Vector2(100, -100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="handle_body"]
-position = Vector2(405.5, 282)
+position = Vector2(408, 287)
 shape = SubResource("RectangleShape2D_obq4m")
