@@ -10,13 +10,14 @@
 [ext_resource type="Script" path="res://scenes/dial_game/dials.gd" id="7_4wnb7"]
 [ext_resource type="PackedScene" uid="uid://oomn0st7qm01" path="res://scenes/dial_game/dial.tscn" id="8_o5s4j"]
 [ext_resource type="PackedScene" uid="uid://dkwonrfskmjfa" path="res://scenes/dial_game/lever.tscn" id="9_pqgui"]
-[ext_resource type="PackedScene" uid="uid://bqv5gp6vvuaof" path="res://scenes/dial_game/flow_gauge.tscn" id="10_dphrg"]
+[ext_resource type="PackedScene" uid="uid://5v4t5xataidc" path="res://scenes/dial_game/flow_gauge.tscn" id="10_dphrg"]
 
 [node name="dials_game" type="Node2D"]
 position = Vector2(79, 220)
 skew = -0.680678
 script = ExtResource("1_eag7r")
 warning_sound = ExtResource("2_ay51o")
+warning_volume_db = -15.0
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 3
@@ -124,3 +125,4 @@ position = Vector2(312.142, -229.043)
 rotation = -0.10472
 scale = Vector2(0.15, 0.15)
 skew = 0.699877
+warning_sound = null
